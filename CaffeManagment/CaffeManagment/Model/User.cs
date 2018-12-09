@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaffeManagment.SecurityManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,6 @@ using System.Threading.Tasks;
 
 namespace CaffeManagment.Model
 {
-    public enum Role : int
-    {
-        Admin = 1,
-        Employee = 2
-    }
 
     public class User
     {
