@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SecurityManager\Audit.cs" />
+    <Compile Include="SecurityManager\AuthorizationPolicy.cs" />
+    <Compile Include="SecurityManager\Encryption.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Page Include="Login\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\MyICommand.cs" />
+    <Compile Include="Common\ValidationBase.cs" />
+    <Compile Include="Common\ValidationErrors.cs" />
     <Compile Include="Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -119,7 +127,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
