@@ -69,6 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Enumerations.cs" />
+    <Compile Include="Model\Check.cs" />
+    <Compile Include="Model\Drink.cs" />
+    <Compile Include="Model\PriceList.cs" />
+    <Compile Include="Model\PriceListItem.cs" />
+    <Compile Include="Model\Table.cs" />
     <Compile Include="SecurityManager\Audit.cs" />
     <Compile Include="SecurityManager\AuthorizationPolicy.cs" />
     <Compile Include="SecurityManager\Encryption.cs" />
