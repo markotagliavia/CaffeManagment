@@ -8,5 +8,93 @@
                       Icon="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.jpg">
 
     <!-- your content -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.35*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.35*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="0.25*" />
+        </Grid.RowDefinitions>
 
+        <Image Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Source="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.jpg" />
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="CornflowerBlue">
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                <Label Content="Admin" FontWeight="Bold"/>
+                <Button Content="Nalog" Margin="0,20,0,0" />
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" Grid.Row="0" Content="Sto11" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="0" Grid.Row="1" Content="Sto21" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="0" Grid.Row="2" Content="Sto31" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="0" Grid.Row="3" Content="Sto41" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="0" Grid.Row="4" Content="Sto51" Margin="5,5,5,5" Background="Green"/>
+
+            <Button Grid.Column="1" Grid.Row="0" Content="Sto12" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Sto22" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="1" Grid.Row="2" Content="Sto32" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="1" Grid.Row="3" Content="Sto42" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="1" Grid.Row="4" Content="Sto52" Margin="5,5,5,5" Background="Green"/>
+
+            <Button Grid.Column="2" Grid.Row="0" Content="Sto13" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="2" Grid.Row="1" Content="Sto23" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="2" Grid.Row="2" Content="Sto33" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="2" Grid.Row="3" Content="Sto43" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="2" Grid.Row="4" Content="Sto53" Margin="5,5,5,5" Background="Green"/>
+
+            <Button Grid.Column="3" Grid.Row="0" Content="Sto14" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="3" Grid.Row="1" Content="Sto24" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="3" Grid.Row="2" Content="Sto34" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="3" Grid.Row="3" Content="Sto44" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="3" Grid.Row="4" Content="Sto54" Margin="5,5,5,5" Background="Green"/>
+
+            <Button Grid.Column="4" Grid.Row="0" Content="Sto15" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="4" Grid.Row="1" Content="Sto25" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="4" Grid.Row="2" Content="Sto35" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="4" Grid.Row="3" Content="Sto45" Margin="5,5,5,5" Background="Green"/>
+            <Button Grid.Column="4" Grid.Row="4" Content="Sto55" Margin="5,5,5,5" Background="Green"/>
+
+        </Grid>
+        
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Background="CornflowerBlue">
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Label Content="Naziv" FontWeight="Bold"/>
+                <TextBox Width="130"/>
+            </StackPanel>
+            <Label Content="Pice" FontWeight="Bold" Margin="0,20,0,0"/>
+            <DataGrid>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Label Content="Za naplatu : " FontWeight="Bold"/>
+                <Label Content="100 RSD"/>
+            </StackPanel>
+            <Button Content="Otvori" Margin="0,20,0,0" />
+            <Button Content="Stampaj racun" Margin="0,10,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Aquamarine">
+            <Button Content="Stampaj sve" Margin="100,20,0,10" />
+        </StackPanel>
+    </Grid>
 </Controls:MetroWindow>
