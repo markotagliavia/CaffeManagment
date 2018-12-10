@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using CaffeManagment.Model;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -213,7 +214,10 @@ namespace CaffeManagment.Login
 
             if (inputUsername == "admin" && inputPassword == sha256("admin"))
             {
-                MainWindow mw = new MainWindow();
+                User u = new User();
+                u.Name = inputUsername;
+                u.HashPassword = inputPassword;//ovo sve popravi
+                MainWindow mw = new MainWindow(u);
                 mw.Show();
                 this.Close();
             }

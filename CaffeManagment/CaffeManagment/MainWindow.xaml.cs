@@ -1,4 +1,6 @@
-﻿using MahApps.Metro.Controls;
+﻿using CaffeManagment.Model;
+using CaffeManagment.ViewModel;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment
 {
@@ -21,9 +24,24 @@ namespace CaffeManagment
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+            MainWindowViewModel.Instance.UserOnSession = user;
+        }
+
+        private void TablesCall(object sender, RoutedEventArgs e)
+        {
+
+             MainWindowViewModel.Instance.OnNav(Navigation.TABLES);
+
+        }
+
+        private void PriceListCall(object sender, RoutedEventArgs e)
+        {
+
+            MainWindowViewModel.Instance.OnNav(Navigation.PRICELIST);
+
         }
     }
 }

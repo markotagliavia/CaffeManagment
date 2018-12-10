@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CaffeManagment.View.PriceListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:CaffeManagment.View"
+             xmlns:viewModel="clr-namespace:CaffeManagment.ViewModel"
+             xmlns:data="clr-namespace:CaffeManagment.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:PriceListViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+            <Label Content="Pretraga po : " Margin="20,10,0,0" Width="100" FontSize="14"/>
+            <ComboBox x:Name="comboBoxSearch"  Margin="10,0,0,0" Height="25" Width="120" Foreground="White">
+                <ComboBoxItem  IsSelected="True" Content="/"/>
+                <ComboBoxItem  Content="Oznaci"/>
+                <ComboBoxItem Content="Ceni"/>
+                <ComboBoxItem Content="Nazivu"/>
+                <ComboBoxItem Content="Tipu"/>
+
+            </ComboBox>
+
+
+            <!--<TextBox x:Name="textBoxSearch" Margin="20,0,20,0" MaxLength="30" Height="25" Width="120" Text="{Binding TextSearch}" Foreground="White"/>
+
+            <Button Content="Pretraži" Command="{Binding PretraziFakturuCommand}" CommandParameter="{Binding Text, ElementName=comboBoxSearch}"  Margin="0,0,0,0"/>-->
+        </StackPanel>
+
+        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="cenovnikGrid" ItemsSource="{Binding DefaultView, Mode=Default}" Height="450" Width="830" SelectedValue="{Binding Path=SelectedPriceListItem}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Oznaka" Binding="{Binding oznaka}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Šifra pića" Binding="{Binding Drink.SifraPica}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Naziv pića" Binding="{Binding Drink.NazivPica}"></DataGridTextColumn>
+                    <DataGridCheckBoxColumn Header="Akcija" Width="Auto" Binding="{Binding Action}"></DataGridCheckBoxColumn>
+                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tip pića" Binding="{Binding Drink.TipPica}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Poreklo pića" Binding="{Binding Drink.Poreklo}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding StartDateTime}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Nova cena" Command="{Binding AddNewPriceItem}" Margin="20,0,460,0"  />
+        </StackPanel>
+    </Grid>
+</UserControl>

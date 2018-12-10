@@ -11,11 +11,13 @@ namespace CaffeManagment.Model
         private DateTime startDateTime;
         private DateTime endDateTime;
         private Drink drink;
+        private float price;
         private bool action;
 
         public DateTime StartDateTime { get => startDateTime; set => startDateTime = value; }
         public DateTime EndDateTime { get => endDateTime; set => endDateTime = value; }
         public Drink Drink { get => drink; set => drink = value; }
         public bool Action { get => action; set => action = value; }
+        public float Price { get => price; set => price = value; }
     }
 }

@@ -19,5 +19,20 @@ namespace CaffeManagment.Common
             DOMACE,
             STRANO
         }
+
+        public enum Operation
+        {
+            ADD,
+            EDIT,
+            DELETE
+        }
+
+        public enum Navigation
+        {
+            TABLES,
+            PRICELIST,
+            ADDPRICELISTITEM,
+            EDITPRICELISTITEM
+        }
     }
 }
