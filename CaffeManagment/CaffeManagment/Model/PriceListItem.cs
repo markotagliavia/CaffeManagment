@@ -14,10 +14,31 @@ namespace CaffeManagment.Model
         private float price;
         private bool action;
 
-        public DateTime StartDateTime { get => startDateTime; set => startDateTime = value; }
-        public DateTime EndDateTime { get => endDateTime; set => endDateTime = value; }
-        public Drink Drink { get => drink; set => drink = value; }
-        public bool Action { get => action; set => action = value; }
-        public float Price { get => price; set => price = value; }
+		
+        public DateTime StartDateTime
+        {
+            get { return startDateTime; }
+            set { startDateTime = value; }
+        }
+        public DateTime EndDateTime
+        {
+            get { return endDateTime; }
+            set { endDateTime = value; }
+        }
+        public Drink Drink
+        {
+            get { return drink; }
+            set { drink = value; }
+        }
+        public bool Action
+        {
+            get { return action; }
+            set { action = value; }
+        }
+        public float Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
     }
 }

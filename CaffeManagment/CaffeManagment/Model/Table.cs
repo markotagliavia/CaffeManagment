@@ -10,12 +10,24 @@ namespace CaffeManagment.Model
     {
         private string oznakaStola;
 
-        private User waiter;
+        private string waiter;
 
         private Dictionary<int, Drink> poruceno;
 
-        public string OznakaStola { get => oznakaStola; set => oznakaStola = value; }
-        public Dictionary<int, Drink> Poruceno { get => poruceno; set => poruceno = value; }
-        public User Waiter { get => waiter; set => waiter = value; }
+        public string OznakaStola
+        {
+            get { return oznakaStola; }
+            set { oznakaStola = value; }
+        }
+        public Dictionary<int, Drink> Poruceno
+        {
+            get { return poruceno; }
+            set { poruceno = value; }
+        }
+        public string Waiter
+        {
+            get { return waiter; }
+            set { waiter = value; }
+        }
     }
 }
