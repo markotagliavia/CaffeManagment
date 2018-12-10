@@ -11,6 +11,7 @@ namespace CaffeManagment.Model
         private User waiter;
         private DateTime dateTime;
         private Dictionary<int, PriceListItem> priceListItem;
+        private int id;
 
         public Check()
         {
@@ -20,8 +21,25 @@ namespace CaffeManagment.Model
         {
         }
 
-        public DateTime DateTime { get => dateTime; set => dateTime = value; }
-        public Dictionary<int, PriceListItem> PriceListItem { get => priceListItem; set => priceListItem = value; }
-        public User Waiter { get => waiter; set => waiter = value; }
+        public DateTime DateTime
+        {
+            get { return dateTime; }
+            set { dateTime = value; }
+        }
+        public Dictionary<int, PriceListItem> PriceListItem
+        {
+            get { return priceListItem; }
+            set { priceListItem = value; }
+        }
+        public User Waiter
+        {
+            get { return waiter; }
+            set { waiter = value; }
+        }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
     }
 }

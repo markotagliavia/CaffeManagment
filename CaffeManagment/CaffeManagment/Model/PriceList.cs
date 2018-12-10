@@ -10,6 +10,10 @@ namespace CaffeManagment.Model
     {
         private Dictionary<int, PriceListItem> items;
 
-        public Dictionary<int, PriceListItem> Items { get => items; set => items = value; }
+        public Dictionary<int, PriceListItem> Items
+        {
+            get { return items; }
+            set { items = value; }
+        }
     }
 }

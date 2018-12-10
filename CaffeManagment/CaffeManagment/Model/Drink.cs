@@ -16,10 +16,30 @@ namespace CaffeManagment.Model
         private string sifraPica;
         private string nazivPica;
 
-        public int Id { get => id; set => id = value; }
-        public TipPica TipPica { get => tipPica; set => tipPica = value; }
-        public Poreklo Poreklo { get => poreklo; set => poreklo = value; }
-        public string SifraPica { get => sifraPica; set => sifraPica = value; }
-        public string NazivPica { get => nazivPica; set => nazivPica = value; }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public TipPica TipPica
+        {
+            get { return tipPica; }
+            set { tipPica = value; }
+        }
+        public Poreklo Poreklo
+        {
+            get { return poreklo; }
+            set { poreklo = value; }
+        }
+        public string SifraPica
+        {
+            get { return sifraPica; }
+            set { sifraPica = value; }
+        }
+        public string NazivPica
+        {
+            get { return nazivPica; }
+            set { nazivPica = value; }
+        }
     }
 }
