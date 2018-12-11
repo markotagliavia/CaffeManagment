@@ -8,26 +8,27 @@
              xmlns:viewModel="clr-namespace:CaffeManagment.ViewModel"
              xmlns:data="clr-namespace:CaffeManagment.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="0.35*" />
+            <ColumnDefinition Width="0.45*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.35*" />
+            <RowDefinition Height="0.25*" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="0.25*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Background="CornflowerBlue">
-            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-                <Label Content="Admin" FontWeight="Bold"/>
-                <Button Content="Nalog" Margin="0,20,0,0" />
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Background="CornflowerBlue">
+            <StackPanel Orientation="Horizontal" Margin="5,0,5,0">
+                <Label Content="{Binding Username}" FontWeight="Bold" Margin="5,30,5,0"/>
+                <Button Content="Moj nalog" Margin="5,0,5,10" Width="80" Height="40"/>
+                <Button Content="Svi nalozi" Margin="5,0,5,10" Width="80" Height="40" Visibility="{Binding IsAdmin}"/>
             </StackPanel>
         </StackPanel>
 
-        <Grid Grid.Column="0" Grid.Row="1">
+        <Grid Grid.Column="0" Grid.Row="1" Background="SandyBrown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -75,24 +76,37 @@
 
         </Grid>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Background="CornflowerBlue" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <Label Content="Naziv" FontWeight="Bold"/>
-                <TextBox Width="130"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Vertical" Background="CornflowerBlue">
+            <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
+                <Label Content="Naziv :" FontWeight="Bold"/>
+                <TextBox Width="130" Text="{Binding NazivStola}" IsEnabled="{Binding SelektovanSto}"/>
             </StackPanel>
-            <Label Content="Pice" FontWeight="Bold" Margin="0,20,0,0"/>
-            <DataGrid>
+            <Label Content="Pice :" FontWeight="Bold" Margin="5,20,5,0"/>
+            <DataGrid Margin="5,0,5,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="260" ItemsSource="{Binding PicaDataSource}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Naziv"
+                      Binding="{Binding Naziv}" Width="*" />
+                    <DataGridTextColumn Header="Kolicina"
+                      Binding="{Binding Kolicina}" Width="*" />
+                    <DataGridTextColumn Header="Cena"
+                      Binding="{Binding Cena}" Width="*" />
+                </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
                 <Label Content="Za naplatu : " FontWeight="Bold"/>
-                <Label Content="100 RSD"/>
+                <Label Content="{Binding UkupnoZaSto}"/>
             </StackPanel>
-            <Button Content="Otvori" Margin="0,20,0,0" />
-            <Button Content="Stampaj racun" Margin="0,10,0,0" />
+            <Button Content="Dodaj" Margin="5,20,5,0" IsEnabled="{Binding SelektovanSto}"/>
+            <Button Content="Stampaj za sto" Margin="5,10,5,0" IsEnabled="{Binding StampajSto}"/>
+            <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
+                <Label Content="Za naplatu ukupno : " FontWeight="Bold"/>
+                <Label Content="{Binding UkupnoZaSve}"/>
+            </StackPanel>
+            <Button Content="Stampaj za sve" Margin="5,10,5,0" IsEnabled="{Binding StampajSve}"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Aquamarine">
-            <Button Content="Stampaj sve" Margin="100,20,0,10" />
+        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Orientation="Horizontal" Background="CornflowerBlue">
+            <Button Content="Istorija" Margin="20,20,0,10" Width="80" Height="40"/>
         </StackPanel>
     </Grid>
 </UserControl>

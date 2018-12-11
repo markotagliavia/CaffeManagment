@@ -16,7 +16,7 @@ namespace CaffeManagment.ViewModel
         public ObservableCollection<PriceListItem> priceListItems { get; set; }
         private ICollectionView defaultView;
         public MyICommand AddNewPriceItem { get; set; }
-        private PriceListItem selectedPriceListItem = new PriceListItem();
+        private PriceListItem selectedPriceListItem;
 
         public PriceListViewModel()
         {

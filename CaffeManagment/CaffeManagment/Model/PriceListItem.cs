@@ -10,6 +10,7 @@ namespace CaffeManagment.Model
     {
         private DateTime startDateTime;
         private DateTime endDateTime;
+        private bool activePrice;
         private Drink drink;
         private float price;
         private bool action;
@@ -40,5 +41,7 @@ namespace CaffeManagment.Model
             get { return price; }
             set { price = value; }
         }
+
+        public bool ActivePrice { get => activePrice; set => activePrice = value; }
     }
 }

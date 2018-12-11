@@ -47,22 +47,11 @@ namespace CaffeManagment.ViewModel
             ButtonCloseMenu = Visibility.Collapsed;
             ButtonOpenMenu = Visibility.Visible;
             LoadPriceList();
-            OnNav(Navigation.TABLES);
+            //OnNav(Navigation.TABLES);
             
         }
 
         #region CommandsImplementation
-        private void CloseMenu(string obj)
-        {
-            ButtonOpenMenu = Visibility.Visible;
-            ButtonCloseMenu = Visibility.Collapsed;
-        }
-
-        private void OpenMenu(string obj)
-        {
-            ButtonOpenMenu = Visibility.Collapsed;
-            ButtonCloseMenu = Visibility.Visible;
-        }
 
         public void Close(string obj)
         {
@@ -78,12 +67,12 @@ namespace CaffeManagment.ViewModel
             switch (destination)
             {
                 case Navigation.TABLES:
-                    ViewModelTitle = "Stolovi";
-                    CurrentViewModel = new TablesViewModel();
+                    this.ViewModelTitle = "Stolovi";
+                    this.CurrentViewModel = new TablesViewModel(UserOnSession);
                     break;
                 case Navigation.PRICELIST:
-                    ViewModelTitle = "Cenovnik";
-                    CurrentViewModel = new PriceListViewModel();
+                    this.ViewModelTitle = "Cenovnik";
+                    this.CurrentViewModel = new PriceListViewModel();
                     break;
             }
         }
@@ -93,7 +82,12 @@ namespace CaffeManagment.ViewModel
             //to do
         }
 
-        public string ViewModelTitle { get => _viewModelTitle;
+        public string ViewModelTitle
+        {
+            get
+            {
+                return _viewModelTitle;
+            }
             set
             {
                 _viewModelTitle = value;

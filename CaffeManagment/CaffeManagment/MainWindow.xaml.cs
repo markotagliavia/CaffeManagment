@@ -28,6 +28,8 @@ namespace CaffeManagment
         {
             InitializeComponent();
             MainWindowViewModel.Instance.UserOnSession = user;
+            this.DataContext = MainWindowViewModel.Instance;
+            MainWindowViewModel.Instance.OnNav(Navigation.TABLES);
         }
 
         private void TablesCall(object sender, RoutedEventArgs e)

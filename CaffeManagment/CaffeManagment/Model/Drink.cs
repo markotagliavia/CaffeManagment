@@ -18,14 +18,34 @@ namespace CaffeManagment.Model
 
         public Drink()
         {
-            Id = Guid.NewGuid();
+            id = Guid.NewGuid();
         }
 
-        public Guid Id { get => id; set => id = value; }
-        public TipPica TipPica { get => tipPica; set => tipPica = value; }
-        public Poreklo Poreklo { get => poreklo; set => poreklo = value; }
-        public string SifraPica { get => sifraPica; set => sifraPica = value; }
-        public string NazivPica { get => nazivPica; set => nazivPica = value; }
+        public Guid Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public TipPica TipPica
+        {
+            get { return tipPica; }
+            set { tipPica = value; }
+        }
+        public Poreklo Poreklo
+        {
+            get { return poreklo; }
+            set { poreklo = value; }
+        }
+        public string SifraPica
+        {
+            get { return sifraPica; }
+            set { sifraPica = value; }
+        }
+        public string NazivPica
+        {
+            get { return nazivPica; }
+            set { nazivPica = value; }
+        }
 
         protected override void ValidateSelf()
         {
@@ -39,5 +59,23 @@ namespace CaffeManagment.Model
             }
             //to do da je unique
         }
+    }
+
+    public class DrinkWithPriceAndQuantity
+    {
+        private string naziv;
+        private int kolicina;
+        private float cena;
+
+        public DrinkWithPriceAndQuantity(string naziv, int kolicina, float cena)
+        {
+            naziv = this.naziv;
+            kolicina = this.kolicina;
+            cena = this.cena;
+        }
+
+        public int Kolicina { get => kolicina; set => kolicina = value; }
+        public string Naziv { get => naziv; set => naziv = value; }
+        public float Cena { get => cena; set => cena = value; }
     }
 }

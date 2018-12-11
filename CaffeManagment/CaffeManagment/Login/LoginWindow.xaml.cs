@@ -215,8 +215,9 @@ namespace CaffeManagment.Login
             if (inputUsername == "admin" && inputPassword == sha256("admin"))
             {
                 User u = new User();
-                u.Name = inputUsername;
+                u.Username = inputUsername;
                 u.HashPassword = inputPassword;//ovo sve popravi
+                u.Role = SecurityManager.Role.Admin;
                 MainWindow mw = new MainWindow(u);
                 mw.Show();
                 this.Close();
