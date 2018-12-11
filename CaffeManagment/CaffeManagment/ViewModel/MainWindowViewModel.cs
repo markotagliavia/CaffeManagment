@@ -7,7 +7,7 @@ using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.ViewModel
 {
-    class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : BindableBase
     {
         public MyICommand<Navigation> NavCommand { get; set; }
 
@@ -48,7 +48,7 @@ namespace CaffeManagment.ViewModel
             ButtonOpenMenu = Visibility.Visible;
             LoadPriceList();
             //OnNav(Navigation.TABLES);
-            
+
         }
 
         #region CommandsImplementation
@@ -68,7 +68,7 @@ namespace CaffeManagment.ViewModel
             {
                 case Navigation.TABLES:
                     this.ViewModelTitle = "Stolovi";
-                    this.CurrentViewModel = new TablesViewModel(UserOnSession);
+                    this.CurrentViewModel = new TablesViewModel();
                     break;
                 case Navigation.PRICELIST:
                     this.ViewModelTitle = "Cenovnik";
