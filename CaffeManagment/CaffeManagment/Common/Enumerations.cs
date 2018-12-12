@@ -20,6 +20,13 @@ namespace CaffeManagment.Common
             STRANO
         }
 
+        public enum State
+        {
+            EMPTY,
+            RESERVED,
+            BUSY
+        }
+
         public enum Operation
         {
             ADD,

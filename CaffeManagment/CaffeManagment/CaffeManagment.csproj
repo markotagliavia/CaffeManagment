@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Enumerations.cs" />
+    <Compile Include="Common\TablesUIConverter.cs" />
     <Compile Include="Model\Check.cs" />
     <Compile Include="Model\Drink.cs" />
     <Compile Include="Model\PriceList.cs" />
@@ -84,12 +85,16 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PriceListItemViewModel.cs" />
     <Compile Include="ViewModel\PriceListViewModel.cs" />
+    <Compile Include="ViewModel\SingleTableViewModel.cs" />
     <Compile Include="ViewModel\TablesViewModel.cs" />
     <Compile Include="View\PriceListItemView.xaml.cs">
       <DependentUpon>PriceListItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PriceListView.xaml.cs">
       <DependentUpon>PriceListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SingleTableView.xaml.cs">
+      <DependentUpon>SingleTableView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TablesView.xaml.cs">
       <DependentUpon>TablesView.xaml</DependentUpon>
@@ -122,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PriceListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SingleTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

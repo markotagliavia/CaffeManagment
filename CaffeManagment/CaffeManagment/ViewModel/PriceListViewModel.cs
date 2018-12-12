@@ -11,7 +11,7 @@ using System.Windows.Data;
 
 namespace CaffeManagment.ViewModel
 {
-    class PriceListViewModel : BindableBase
+    public class PriceListViewModel : BindableBase
     {
         public ObservableCollection<PriceListItem> priceListItems { get; set; }
         private ICollectionView defaultView;

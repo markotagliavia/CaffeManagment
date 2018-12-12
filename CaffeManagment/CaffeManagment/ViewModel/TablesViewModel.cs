@@ -23,10 +23,13 @@ namespace CaffeManagment.ViewModel
         private int ukupnoZaSve;
         private bool stampajSto;
         private bool stampajSve;
+        private Dictionary<string, Table> tables;
+        private Table selectedTable;
+        
 
-        public TablesViewModel(User userOnSession)
+        public TablesViewModel()
         {
-            this.userOnSession = userOnSession;
+            this.userOnSession = MainWindowViewModel.Instance.UserOnSession;
             isAdmin = userOnSession.Role.Equals(Role.Admin) ? Visibility.Visible : Visibility.Hidden;
             nazivStola = "";
             selektovanSto = false;
@@ -36,6 +39,32 @@ namespace CaffeManagment.ViewModel
             stampajSto = false;
             stampajSve = false;
             username = userOnSession.Username;
+            Test();
+        }
+
+        private void Test()
+        {
+            Tables = new Dictionary<string, Table>();
+            for (int i = 0; i < 22; i++)
+            {
+                Table t = new Table();
+                t.OznakaStola = $"sto{i}";
+                int moduo = i % 3;
+                if (moduo == 0)
+                {
+                    t.StanjeStola = Enumerations.State.EMPTY;
+                }
+                else if (moduo == 1)
+                {
+                    t.StanjeStola = Enumerations.State.BUSY;
+                }
+                else
+                {
+                    t.StanjeStola = Enumerations.State.RESERVED;
+                }
+                Tables.Add(t.OznakaStola,t);
+                
+            }
         }
 
         #region Properties
@@ -70,12 +99,12 @@ namespace CaffeManagment.ViewModel
         {
             get
             {
-                return nazivStola;
+                return SelectedTable.OznakaStola;
             }
-            set
+            private set
             {
-                nazivStola = value;
-                OnPropertyChanged("NazivStola");
+                SelectedTable.OznakaStola = value;
+                OnPropertyChanged(NazivStola);
             }
         }
 
@@ -169,6 +198,30 @@ namespace CaffeManagment.ViewModel
                 OnPropertyChanged("PicaDataSource");
             }
         }
+
+        public Dictionary<string, Table> Tables
+        {
+            get { return tables; }
+            set
+            {
+                tables = value;
+                OnPropertyChanged(nameof(Tables));
+            }
+        }
+
+        public Table SelectedTable
+        {
+            get
+            { return selectedTable; }
+            set
+            {
+                selectedTable = value;
+                OnPropertyChanged(nameof(SelectedTable));
+                OnPropertyChanged(NazivStola);
+            }
+        }
+
+
 
         #endregion
 

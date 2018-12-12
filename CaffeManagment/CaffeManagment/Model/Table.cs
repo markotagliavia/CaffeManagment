@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CaffeManagment.Common;
+using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.Model
 {
@@ -11,6 +13,8 @@ namespace CaffeManagment.Model
         private string oznakaStola;
 
         private string waiter;
+
+        private State stanjeStola;
 
         private Dictionary<int, Drink> poruceno;
 
@@ -28,6 +32,12 @@ namespace CaffeManagment.Model
         {
             get { return waiter; }
             set { waiter = value; }
+        }
+
+        public State StanjeStola
+        {
+            get { return stanjeStola; }
+            set { stanjeStola = value; }
         }
     }
 }
