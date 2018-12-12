@@ -73,7 +73,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Enumerations.cs" />
-    <Compile Include="Common\TablesUIConverter.cs" />
     <Compile Include="Model\Check.cs" />
     <Compile Include="Model\Drink.cs" />
     <Compile Include="Model\PriceList.cs" />
@@ -82,11 +81,15 @@
     <Compile Include="SecurityManager\Audit.cs" />
     <Compile Include="SecurityManager\AuthorizationPolicy.cs" />
     <Compile Include="SecurityManager\Encryption.cs" />
+    <Compile Include="ViewModel\AddRemoveDrinkForTableViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PriceListItemViewModel.cs" />
     <Compile Include="ViewModel\PriceListViewModel.cs" />
-    <Compile Include="ViewModel\SingleTableViewModel.cs" />
     <Compile Include="ViewModel\TablesViewModel.cs" />
+	<Compile Include="ViewModel\SingleTableViewModel.cs" />
+    <Compile Include="View\AddRemoveDrinkForTableView.xaml.cs">
+      <DependentUpon>AddRemoveDrinkForTableView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PriceListItemView.xaml.cs">
       <DependentUpon>PriceListItemView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,7 @@
     <Compile Include="Common\MyICommand.cs" />
     <Compile Include="Common\ValidationBase.cs" />
     <Compile Include="Common\ValidationErrors.cs" />
+    <Compile Include="Common\TablesUIConverter.cs" />
     <Compile Include="Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -122,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AddRemoveDrinkForTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PriceListItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,11 +138,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SingleTableView.xaml">
+    <Page Include="View\TablesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TablesView.xaml">
+    <Page Include="View\SingleTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
