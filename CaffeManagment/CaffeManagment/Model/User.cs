@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CaffeManagment.Model
 {
-
+    [Serializable]
     public class User
     {
         private string username;

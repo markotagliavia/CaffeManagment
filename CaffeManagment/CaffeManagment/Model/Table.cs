@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.Model
 {
+    [Serializable]
     public class Table
     {
         private string oznakaStola;
@@ -16,14 +18,14 @@ namespace CaffeManagment.Model
 
         private State stanjeStola;
 
-        private Dictionary<int, Drink> poruceno;
+        private ObservableCollection<DrinkWithPriceAndQuantity> poruceno;
 
         public string OznakaStola
         {
             get { return oznakaStola; }
             set { oznakaStola = value; }
         }
-        public Dictionary<int, Drink> Poruceno
+        public ObservableCollection<DrinkWithPriceAndQuantity> Poruceno
         {
             get { return poruceno; }
             set { poruceno = value; }

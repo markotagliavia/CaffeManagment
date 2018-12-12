@@ -8,6 +8,7 @@ using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.Model
 {
+    [Serializable]
     public class Drink : ValidationBase
     {
         private Guid id;
@@ -61,6 +62,7 @@ namespace CaffeManagment.Model
         }
     }
 
+    [Serializable]
     public class DrinkWithPriceAndQuantity
     {
         private string naziv;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CaffeManagment.Model
 {
+    [Serializable]
     public class PriceListItem
     {
         private DateTime startDateTime;
