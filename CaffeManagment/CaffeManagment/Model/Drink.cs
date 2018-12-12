@@ -64,18 +64,21 @@ namespace CaffeManagment.Model
     public class DrinkWithPriceAndQuantity
     {
         private string naziv;
+        private string sifra;
         private int kolicina;
         private float cena;
 
-        public DrinkWithPriceAndQuantity(string naziv, int kolicina, float cena)
+        public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena)
         {
             naziv = this.naziv;
             kolicina = this.kolicina;
             cena = this.cena;
+            sifra = this.Sifra;
         }
 
         public int Kolicina { get => kolicina; set => kolicina = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public float Cena { get => cena; set => cena = value; }
+        public string Sifra { get => sifra; set => sifra = value; }
     }
 }
