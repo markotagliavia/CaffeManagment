@@ -17,13 +17,13 @@ namespace CaffeManagment.Common
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
-            var tables = value as Dictionary<string,Table>;
+
+            var tables = value as Dictionary<string, Table>;
             if (tables != null)
             {
-                var gridView = parameter as Grid;
+                var gridView = new Grid();
                 int columns = 5;
-                int rows = (tables.Count() % columns)+1;
+                int rows = (tables.Count() / columns) + 1;
 
                 for (int i = 0; i < columns; i++)
                 {
@@ -57,11 +57,11 @@ namespace CaffeManagment.Common
                         column = 0;
                         ++row;
                     }
-                    else 
+                    else
                     {
                         ++column;
                     }
-                    
+
                 }
                 return gridView;
             }

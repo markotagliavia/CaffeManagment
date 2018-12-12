@@ -1,6 +1,7 @@
 ﻿using CaffeManagment.Common;
 using CaffeManagment.Model;
 using CaffeManagment.SecurityManager;
+using CaffeManagment.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +26,10 @@ namespace CaffeManagment.ViewModel
         private bool stampajSve;
         private Dictionary<string, Table> tables;
         private Table selectedTable;
-        
+
+        #region Commands
+        public MyICommand OtvoriStoCommand { get; private set; } 
+        #endregion
 
         public TablesViewModel()
         {
@@ -39,7 +43,18 @@ namespace CaffeManagment.ViewModel
             stampajSto = false;
             stampajSve = false;
             username = userOnSession.Username;
+            OtvoriStoCommand = new MyICommand(OtvoriStoExecute);
             Test();
+            MainWindowViewModel.Instance.TableChanged += HandleTableChanged;
+        }
+
+        private void OtvoriStoExecute()
+        {
+            if (selectedTable != null)
+            {
+                AddRemoveDrinkForTableView a = new AddRemoveDrinkForTableView(userOnSession, selectedTable);
+                a.Show();
+            }
         }
 
         private void Test()
@@ -95,16 +110,23 @@ namespace CaffeManagment.ViewModel
             }
         }
 
+        private void HandleTableChanged(Table t)
+        {
+            SelectedTable = t;
+            OnPropertyChanged(nameof(NazivStola));
+        }
+
         public string NazivStola
         {
             get
             {
-                return SelectedTable.OznakaStola;
+                return SelectedTable?.OznakaStola ?? "";
             }
-            private set
+            set
             {
                 SelectedTable.OznakaStola = value;
                 OnPropertyChanged(NazivStola);
+                MainWindowViewModel.Instance.NotifySelectionChanged(SelectedTable);
             }
         }
 
@@ -218,6 +240,10 @@ namespace CaffeManagment.ViewModel
                 selectedTable = value;
                 OnPropertyChanged(nameof(SelectedTable));
                 OnPropertyChanged(NazivStola);
+                if (selectedTable != null && selectedTable.OznakaStola.Length > 0)
+                {
+                    SelektovanSto = true;
+                }
             }
         }
 

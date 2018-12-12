@@ -14,7 +14,7 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -40,7 +40,7 @@
         </StackPanel>
 
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
-            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="cenovnikGrid" ItemsSource="{Binding DefaultView, Mode=Default}" Height="450" Width="830" SelectedValue="{Binding Path=SelectedPriceListItem}">
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="cenovnikGrid" ItemsSource="{Binding DefaultView, Mode=Default}" SelectedValue="{Binding Path=SelectedPriceListItem}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Oznaka" Binding="{Binding oznaka}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Šifra pića" Binding="{Binding Drink.SifraPica}"></DataGridTextColumn>

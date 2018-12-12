@@ -1,8 +1,10 @@
 ﻿using CaffeManagment.Common;
 using CaffeManagment.Login;
 using CaffeManagment.Model;
+using System;
 using System.Windows;
 using System.Windows.Media;
+using System.Xml.Serialization;
 using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.ViewModel
@@ -10,6 +12,9 @@ namespace CaffeManagment.ViewModel
     public class MainWindowViewModel : BindableBase
     {
         public MyICommand<Navigation> NavCommand { get; set; }
+
+        [XmlIgnore]
+        public Action<Table> TableChanged;
 
         private BindableBase currentViewModel;
 
@@ -109,5 +114,16 @@ namespace CaffeManagment.ViewModel
         }
         public TablesViewModel TablesViewModel { get => tablesViewModel; set => tablesViewModel = value; }
         public PriceListViewModel PriceListViewModel { get => priceListViewModel; set => priceListViewModel = value; }
+        
+
+        public void NotifySelectionChanged(Table t)
+        {
+            Action<Table> local = TableChanged;
+            if (local != null)
+            {
+                local.Invoke(t);
+            }
+            
+        }
     }
 }

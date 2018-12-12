@@ -22,11 +22,19 @@ namespace CaffeManagment.ViewModel
             SelectedTable = t;
             SetColor(t.StanjeStola);
             TableClickedCommand = new MyICommand(TableClicked);
-           
+            MainWindowViewModel.Instance.TableChanged += HandleTableChanged;
+
+
         }
 
         public void TableClicked()
         {
+            MainWindowViewModel.Instance.NotifySelectionChanged(SelectedTable);
+        }
+
+        private void HandleTableChanged(Table t)
+        {
+            OnPropertyChanged(nameof(SelectedTable));
             
         }
 
