@@ -6,7 +6,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:CaffeManagment.View"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="600">
+             Height="550" Width="800">
     <Grid Background="CornflowerBlue">
         <StackPanel Orientation="Vertical">
             <Label Content="{Binding ImeStola}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="5,10,0,20"/>
