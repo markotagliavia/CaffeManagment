@@ -14,6 +14,7 @@ namespace CaffeManagment.Common
         private String racuni = "racuni.bin";
         private String cenovnik = "cenovnik.bin";
         private String stolovi = "stolovi.bin";
+        private String licenca = "licenca.lic";
 
         private static DataSourceUtil instance;
         public static DataSourceUtil Instance
@@ -87,6 +88,26 @@ namespace CaffeManagment.Common
             }
         }
 
+        public bool WriteLicence(DateTime dateTime)
+        {
+            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, licenca);
+            try
+            {
+                var f_fileStream = new FileStream(destPath1, FileMode.Create, FileAccess.Write);
+                var f_binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                string checkSum = "MarkovLicencniString";
+                Licenca lic = new Licenca(dateTime, checkSum);
+                f_binaryFormatter.Serialize(f_fileStream, lic);
+                f_fileStream.Close();
+                return true;
+            }
+            catch (Exception exe)
+            {
+                Console.WriteLine($"nisam sacuvao stolove zbog {exe.Message}");
+                return false;
+            }
+        }
+
         public PriceList ReadPriceList()
         {
             string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, cenovnik);
@@ -139,6 +160,55 @@ namespace CaffeManagment.Common
                 Console.WriteLine($"neuspesna deserijalizacija zbog {exe.Message}");
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Returns true if licence is up to date and check sum is valid. Otherwise false.
+        /// </summary>
+        /// <returns></returns>
+        public bool ReadLicence()
+        {
+            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, licenca);
+            try
+            {
+                var f_fileStream = File.OpenRead(destPath1);
+                var f_binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                Licenca lic = (Licenca)f_binaryFormatter.Deserialize(f_fileStream);
+                f_fileStream.Close();
+                if (lic.checkSum.Equals("MarkovLicencniString"))
+                {
+                    if (lic.dateTime > DateTime.Now)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception exe)
+            {
+                Console.WriteLine($"neuspesna deserijalizacija licence zbog {exe.Message}");
+                return false;
+            }
+        }
+    }
+
+    [Serializable]
+    public struct Licenca
+    {
+        public DateTime dateTime;
+        public string checkSum;
+
+        public Licenca(DateTime dateTime, string checkSum)
+        {
+            this.dateTime = dateTime;
+            this.checkSum = checkSum;
         }
     }
 }

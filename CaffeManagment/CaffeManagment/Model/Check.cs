@@ -9,10 +9,13 @@ namespace CaffeManagment.Model
     [Serializable]
     public class Check
     {
-        private User waiter;
+        private string waiter;
         private DateTime dateTime;
         private Dictionary<int, PriceListItem> priceListItem;
         private int id;
+        private bool storniran;
+        private float ukupnoPara;
+        private string nazivStola;
 
         public Check()
         {
@@ -32,7 +35,7 @@ namespace CaffeManagment.Model
             get { return priceListItem; }
             set { priceListItem = value; }
         }
-        public User Waiter
+        public string Waiter
         {
             get { return waiter; }
             set { waiter = value; }
@@ -42,5 +45,13 @@ namespace CaffeManagment.Model
             get { return id; }
             set { id = value; }
         }
+        public bool Storniran
+        {
+            get { return storniran; }
+            set { storniran = value; }
+        }
+
+        public float UkupnoPara { get => ukupnoPara; set => ukupnoPara = value; }
+        public string NazivStola { get => nazivStola; set => nazivStola = value; }
     }
 }

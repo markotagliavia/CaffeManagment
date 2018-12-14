@@ -1,4 +1,5 @@
-﻿using CaffeManagment.Model;
+﻿using CaffeManagment.Common;
+using CaffeManagment.Model;
 using CaffeManagment.ViewModel;
 using MahApps.Metro.Controls;
 using System;
@@ -34,16 +35,23 @@ namespace CaffeManagment
 
         private void TablesCall(object sender, RoutedEventArgs e)
         {
-
              MainWindowViewModel.Instance.OnNav(Navigation.TABLES);
-
         }
 
         private void PriceListCall(object sender, RoutedEventArgs e)
         {
-
             MainWindowViewModel.Instance.OnNav(Navigation.PRICELIST);
+        }
 
+        private void ChecksCall(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel.Instance.OnNav(Navigation.CHECKS);      
+        }
+
+        private void Zatvaranje(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //generisanje nove licence
+            //DataSourceUtil.Instance.WriteLicence(new DateTime(2019, 2, 1));
         }
     }
 }

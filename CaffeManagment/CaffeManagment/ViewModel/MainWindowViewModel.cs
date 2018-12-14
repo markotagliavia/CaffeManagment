@@ -20,6 +20,7 @@ namespace CaffeManagment.ViewModel
 
         private TablesViewModel tablesViewModel;
         private PriceListViewModel priceListViewModel;
+        private ChecksViewModel checksViewModel;
 
         private string _viewModelTitle = "Stolovi";
         private System.Windows.Media.Color c1;
@@ -79,6 +80,10 @@ namespace CaffeManagment.ViewModel
                     this.ViewModelTitle = "Cenovnik";
                     this.CurrentViewModel = new PriceListViewModel();
                     break;
+                case Navigation.CHECKS:
+                    this.ViewModelTitle = "Računi";
+                    this.CurrentViewModel = new ChecksViewModel();
+                    break;
             }
         }
 
@@ -114,7 +119,7 @@ namespace CaffeManagment.ViewModel
         }
         public TablesViewModel TablesViewModel { get => tablesViewModel; set => tablesViewModel = value; }
         public PriceListViewModel PriceListViewModel { get => priceListViewModel; set => priceListViewModel = value; }
-        
+        public ChecksViewModel ChecksViewModel { get => checksViewModel; set => checksViewModel = value; }
 
         public void NotifySelectionChanged(Table t)
         {

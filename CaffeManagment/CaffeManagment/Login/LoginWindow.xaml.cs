@@ -1,4 +1,5 @@
-﻿using CaffeManagment.Model;
+﻿using CaffeManagment.Common;
+using CaffeManagment.Model;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -212,15 +213,23 @@ namespace CaffeManagment.Login
             string inputUsername = usernameTextBox.Text;
             string inputPassword = sha256(passBox.Password);
 
-            if (inputUsername == "admin" && inputPassword == sha256("admin"))
+            if (DataSourceUtil.Instance.ReadLicence())
             {
-                User u = new User();
-                u.Username = inputUsername;
-                u.HashPassword = inputPassword;//ovo sve popravi
-                u.Role = SecurityManager.Role.Admin;
-                MainWindow mw = new MainWindow(u);
-                mw.Show();
-                this.Close();
+                if (inputUsername == "admin" && inputPassword == sha256("admin"))
+                {
+                    User u = new User();
+                    u.Username = inputUsername;
+                    u.HashPassword = inputPassword;//ovo sve popravi
+                    u.Role = SecurityManager.Role.Admin;
+                    MainWindow mw = new MainWindow(u);
+                    mw.Show();
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vaša licenca je istekla. Javite se osobi koja je napravila softver ako želite da produžite licencu.");
+                Application.Current.Shutdown();
             }
         }
 

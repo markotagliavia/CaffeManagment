@@ -83,6 +83,7 @@
     <Compile Include="SecurityManager\AuthorizationPolicy.cs" />
     <Compile Include="SecurityManager\Encryption.cs" />
     <Compile Include="ViewModel\AddRemoveDrinkForTableViewModel.cs" />
+    <Compile Include="ViewModel\ChecksViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PriceListItemViewModel.cs" />
     <Compile Include="ViewModel\PriceListViewModel.cs" />
@@ -90,6 +91,9 @@
     <Compile Include="ViewModel\SingleTableViewModel.cs" />
     <Compile Include="View\AddRemoveDrinkForTableView.xaml.cs">
       <DependentUpon>AddRemoveDrinkForTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChecksView.xaml.cs">
+      <DependentUpon>ChecksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PriceListItemView.xaml.cs">
       <DependentUpon>PriceListItemView.xaml</DependentUpon>
@@ -128,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AddRemoveDrinkForTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChecksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,9 +185,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\Images\logo.jpg" />
+    <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\lock1.png" />

@@ -42,16 +42,15 @@
                 <TextBox Width="130" Text="{Binding NazivStola, Mode=TwoWay}" IsEnabled="{Binding SelektovanSto}"/>
             </StackPanel>
             <Label Content="Pice :" FontWeight="Bold" Margin="5,20,5,0"/>
-            <DataGrid Margin="5,0,5,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="260" ItemsSource="{Binding PicaDataSource}" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv"
-                      Binding="{Binding Naziv}" Width="*" />
-                    <DataGridTextColumn Header="Kolicina"
-                      Binding="{Binding Kolicina}" Width="*" />
-                    <DataGridTextColumn Header="Cena"
-                      Binding="{Binding Cena}" Width="*" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <DataGrid Margin="5,0,5,0" CanUserAddRows="False" IsReadOnly="True" Height="260" ItemsSource="{Binding PicaDataSource}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Količina" Binding="{Binding Kolicina}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Cena}" IsReadOnly="True"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
             <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
                 <Label Content="Za naplatu : " FontWeight="Bold"/>
                 <Label Content="{Binding UkupnoZaSto}"/>
@@ -66,7 +65,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Orientation="Horizontal" Background="CornflowerBlue">
-            <Button Content="Istorija" Margin="20,20,0,10" Width="80" Height="40"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

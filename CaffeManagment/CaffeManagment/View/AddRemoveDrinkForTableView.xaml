@@ -22,7 +22,7 @@
 
                     <StackPanel Orientation="Vertical">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding PiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="300">
+                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding PiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="300">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Šifra" Binding="{Binding Id}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
@@ -45,7 +45,7 @@
                     </StackPanel>
 
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                        <DataGrid CanUserAddRows="False" SelectedIndex="{Binding SelectedPiceDesno}" AutoGenerateColumns="False" x:Name="piceDesnoGrid" ItemsSource="{Binding PiceDesno, Mode=OneWay}" VerticalAlignment="Top" Height="300">
+                        <DataGrid CanUserAddRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceDesno}" AutoGenerateColumns="False" x:Name="piceDesnoGrid" ItemsSource="{Binding PiceDesno, Mode=OneWay}" VerticalAlignment="Top" Height="300">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Šifra" Binding="{Binding Sifra}" IsReadOnly="True"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" IsReadOnly="True"></DataGridTextColumn>

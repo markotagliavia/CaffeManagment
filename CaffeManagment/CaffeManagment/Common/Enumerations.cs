@@ -39,7 +39,8 @@ namespace CaffeManagment.Common
             TABLES,
             PRICELIST,
             ADDPRICELISTITEM,
-            EDITPRICELISTITEM
+            EDITPRICELISTITEM,
+            CHECKS
         }
     }
 }
