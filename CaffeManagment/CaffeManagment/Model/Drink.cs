@@ -75,10 +75,10 @@ namespace CaffeManagment.Model
 
         public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena)
         {
-            naziv = this.naziv;
-            kolicina = this.kolicina;
-            cena = this.cena;
-            sifra = this.Sifra;
+            this.naziv = naziv;
+            this.kolicina = kolicina;
+            this.cena = cena;
+            this.sifra = sifra;
         }
 
         public int Kolicina { get => kolicina; set => kolicina = value; }

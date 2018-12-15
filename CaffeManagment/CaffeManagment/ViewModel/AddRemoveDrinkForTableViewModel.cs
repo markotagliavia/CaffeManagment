@@ -90,6 +90,7 @@ namespace CaffeManagment.ViewModel
             if (pom.Equals("") || String.IsNullOrEmpty(pom) || String.IsNullOrWhiteSpace(pom))
             {
                 DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(PiceLevo);
+                DefaultViewPiceLevo.Filter = null;
             }
             else
             {
@@ -119,8 +120,7 @@ namespace CaffeManagment.ViewModel
                 if (SelectedPiceLevo != -1)
                 {
                     Drink p = PiceLevo.ElementAt(SelectedPiceLevo);
-                    //TO DO : nabavi cenu umesto ove nule
-                    DrinkWithPriceAndQuantity pk = new DrinkWithPriceAndQuantity(p.NazivPica, p.SifraPica, kolicina, 0);
+                    DrinkWithPriceAndQuantity pk = new DrinkWithPriceAndQuantity(p.NazivPica, p.SifraPica, kolicina, p.AcutelPrice);
                     PiceDesno.Add(pk);
                 }
                 else

@@ -93,25 +93,12 @@ namespace CaffeManagment.ViewModel
         private void Test()
         {
             Tables = new Dictionary<string, Table>();
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 25; i++)
             {
                 Table t = new Table();
                 t.OznakaStola = $"sto{i}";
-                int moduo = i % 3;
-                if (moduo == 0)
-                {
-                    t.StanjeStola = Enumerations.State.EMPTY;
-                }
-                else if (moduo == 1)
-                {
-                    t.StanjeStola = Enumerations.State.BUSY;
-                }
-                else
-                {
-                    t.StanjeStola = Enumerations.State.RESERVED;
-                }
+                t.StanjeStola = Enumerations.State.EMPTY;
                 Tables.Add(t.OznakaStola,t);
-                
             }
         }
 
