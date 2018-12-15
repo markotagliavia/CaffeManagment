@@ -1,4 +1,5 @@
-﻿using CaffeManagment.ViewModel;
+﻿using CaffeManagment.Model;
+using CaffeManagment.ViewModel;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,10 @@ namespace CaffeManagment.View
     /// </summary>
     public partial class PriceListItemView : MetroWindow
     {
-        public PriceListItemView()
+        public PriceListItemView(Operation o,Drink d = null)
         {
             InitializeComponent();
-            PriceListItemViewModel vm = new PriceListItemViewModel();
+            PriceListItemViewModel vm = new PriceListItemViewModel(o, d);
             this.DataContext = vm;
             tippica.ItemsSource = Enum.GetValues(typeof(TipPica)).Cast<TipPica>();
             poreklo.ItemsSource = Enum.GetValues(typeof(Poreklo)).Cast<Poreklo>();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.Common
 {

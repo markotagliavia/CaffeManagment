@@ -16,6 +16,9 @@ namespace CaffeManagment.ViewModel
         [XmlIgnore]
         public Action<Table> TableChanged;
 
+        [XmlIgnore]
+        public Action Reload;
+
         private BindableBase currentViewModel;
 
         private TablesViewModel tablesViewModel;
@@ -128,6 +131,15 @@ namespace CaffeManagment.ViewModel
                 local.Invoke(t);
             }
             
+        }
+
+        public void NotifyReload()
+        {
+            Action local = Reload;
+            if (local != null)
+            {
+                local.Invoke();
+            }
         }
     }
 }
