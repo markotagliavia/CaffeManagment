@@ -41,7 +41,7 @@ namespace CaffeManagment.Common
             {
                 var f_fileStream = new FileStream(destPath1, FileMode.Create, FileAccess.Write);
                 var f_binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                f_binaryFormatter.Serialize(f_fileStream, cenovnik);
+                f_binaryFormatter.Serialize(f_fileStream, priceList);
                 f_fileStream.Close();
                 return true;
             }

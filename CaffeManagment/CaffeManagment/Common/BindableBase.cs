@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CaffeManagment.Common
 {
+    [Serializable]
     public class BindableBase : INotifyPropertyChanged
     {
         protected virtual void SetProperty<T>(ref T member, T val,
@@ -24,6 +25,7 @@ namespace CaffeManagment.Common
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        [field: NonSerializedAttribute()]
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
     }
 }

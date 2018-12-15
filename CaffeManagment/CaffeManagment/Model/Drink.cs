@@ -16,6 +16,7 @@ namespace CaffeManagment.Model
         private Poreklo poreklo;
         private string sifraPica;
         private string nazivPica;
+        private float acutelPrice;
 
         public Drink()
         {
@@ -47,6 +48,8 @@ namespace CaffeManagment.Model
             get { return nazivPica; }
             set { nazivPica = value; }
         }
+
+        public float AcutelPrice { get => acutelPrice; set => acutelPrice = value; }
 
         protected override void ValidateSelf()
         {

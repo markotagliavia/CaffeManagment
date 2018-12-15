@@ -9,12 +9,19 @@ namespace CaffeManagment.Model
     [Serializable]
     public class PriceListItem
     {
+        private Guid id;
         private DateTime startDateTime;
         private DateTime endDateTime;
         private bool activePrice;
         private Drink drink;
         private float price;
         private bool action;
+
+        public PriceListItem()
+        {
+            id = Guid.NewGuid();
+            price = 0;
+        }
 
 		
         public DateTime StartDateTime
@@ -44,5 +51,6 @@ namespace CaffeManagment.Model
         }
 
         public bool ActivePrice { get => activePrice; set => activePrice = value; }
+        public Guid Id { get => id; set => id = value; }
     }
 }

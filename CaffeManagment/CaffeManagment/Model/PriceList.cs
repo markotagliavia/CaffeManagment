@@ -9,9 +9,14 @@ namespace CaffeManagment.Model
     [Serializable]
     public class PriceList
     {
-        private Dictionary<int, PriceListItem> items;
+        private Dictionary<Guid, Drink> items;
 
-        public Dictionary<int, PriceListItem> Items
+        public PriceList()
+        {
+            Items = new Dictionary<Guid, Drink>();
+        }
+
+        public Dictionary<Guid, Drink> Items
         {
             get { return items; }
             set { items = value; }

@@ -42,14 +42,11 @@
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
             <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="cenovnikGrid" ItemsSource="{Binding DefaultView, Mode=Default}" SelectedValue="{Binding Path=SelectedPriceListItem}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Oznaka" Binding="{Binding oznaka}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Šifra pića" Binding="{Binding Drink.SifraPica}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Naziv pića" Binding="{Binding Drink.NazivPica}"></DataGridTextColumn>
-                    <DataGridCheckBoxColumn Header="Akcija" Width="Auto" Binding="{Binding Action}"></DataGridCheckBoxColumn>
-                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Tip pića" Binding="{Binding Drink.TipPica}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Poreklo pića" Binding="{Binding Drink.Poreklo}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding StartDateTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Šifra pića" Binding="{Binding SifraPica}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Naziv pića" Binding="{Binding NazivPica}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cena" Binding="{Binding AcutelPrice}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tip pića" Binding="{Binding TipPica}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Poreklo pića" Binding="{Binding Poreklo}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

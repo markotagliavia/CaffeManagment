@@ -10,21 +10,19 @@ namespace CaffeManagment.ViewModel
 {
     public class PriceListItemViewModel:BindableBase
     {
-        private PriceListItem priceListItem;
+        private Drink priceListItem;
         public Action CloseAction { get; set; }
         public MyICommand AddNewPriceItem { get; set; }
 
         public PriceListItemViewModel()
         {
-            priceListItem = new PriceListItem();
-            priceListItem.ActivePrice = true;
-            priceListItem.Drink = new Drink();
-            priceListItem.StartDateTime = DateTime.Now;
+            priceListItem = new Drink();
+            priceListItem.AcutelPrice = 0;
             AddNewPriceItem = new MyICommand(OnAdd, CanAdd);
         }
         
 
-        public PriceListItem PriceListItem
+        public Drink PriceListItem
         {
             get => priceListItem;
             set
@@ -36,6 +34,14 @@ namespace CaffeManagment.ViewModel
         }
         public void OnAdd()
         {
+            PriceList priceList = DataSourceUtil.Instance.ReadPriceList();
+            
+            if (priceList == null)
+            {
+                priceList = new PriceList();
+            }
+            priceList.Items.Add(PriceListItem.Id, PriceListItem);
+            DataSourceUtil.Instance.WritePriceList(priceList);
             if (CloseAction != null)
             {
                 CloseAction.Invoke();

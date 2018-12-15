@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace CaffeManagment.Common
 {
+    [Serializable]
     public abstract class ValidationBase : BindableBase
     {
         public ValidationErrors ValidationErrors { get; set; }

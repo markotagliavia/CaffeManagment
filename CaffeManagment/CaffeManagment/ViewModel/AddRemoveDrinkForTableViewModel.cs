@@ -239,12 +239,10 @@ namespace CaffeManagment.ViewModel
             PriceList pom;
             if ((pom = DataSourceUtil.Instance.ReadPriceList()) != null)
             {
-                foreach (KeyValuePair<int, PriceListItem> pair in pom.Items)
+                foreach (KeyValuePair<Guid, Drink> pair in pom.Items)
                 {
-                    if (pair.Value.ActivePrice)
-                    {
-                        PiceLevo.Add(pair.Value.Drink);
-                    }
+                    
+                    PiceLevo.Add(pair.Value);
                 }
             }
         }

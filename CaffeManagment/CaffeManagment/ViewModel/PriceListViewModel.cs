@@ -14,14 +14,14 @@ namespace CaffeManagment.ViewModel
 {
     public class PriceListViewModel : BindableBase
     {
-        public ObservableCollection<PriceListItem> priceListItems { get; set; }
+        public ObservableCollection<Drink> priceListItems { get; set; }
         private ICollectionView defaultView;
         public MyICommand AddNewPriceItem { get; set; }
-        private PriceListItem selectedPriceListItem;
+        private Drink selectedPriceListItem;
 
         public PriceListViewModel()
         {
-            priceListItems = new ObservableCollection<PriceListItem>();
+            priceListItems = new ObservableCollection<Drink>();
             var priceList = DataSourceUtil.Instance.ReadPriceList();
             if (priceList != null)
             {
@@ -35,7 +35,7 @@ namespace CaffeManagment.ViewModel
             DefaultView = CollectionViewSource.GetDefaultView(priceListItems);
         }
 
-        public PriceListItem SelectedPriceListItem
+        public Drink SelectedPriceListItem
         {
             get => selectedPriceListItem;
             set

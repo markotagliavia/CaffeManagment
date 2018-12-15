@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace CaffeManagment.Common
 {
+    [Serializable]
     public class ValidationErrors : BindableBase
     {
         private readonly Dictionary<string, string> validationErrors = new Dictionary<string, string>();

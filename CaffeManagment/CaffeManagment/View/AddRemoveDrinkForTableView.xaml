@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:CaffeManagment.View"
+             xmlns:control="clr-namespace:CaffeManagment.Common"
              mc:Ignorable="d" 
              Height="800" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="CornflowerBlue">
@@ -25,16 +26,16 @@
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                             <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding DefaultViewPiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="450">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Šifra" Binding="{Binding Id}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Šifra" Binding="{Binding SifraPica}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Naziv" Binding="{Binding NazivPica}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Cena" Binding="{Binding AcutelPrice}"></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </ScrollViewer>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                             <Label Content="Količina : " FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" />
-                            <TextBox Text="{Binding KolicinaText}" Width="100" Margin="5,0,0,0"/>
+                            <local:DigetTextBox Text="{Binding KolicinaText}" Width="100" Margin="5,0,0,0"></local:DigetTextBox>
                         </StackPanel>
                     </StackPanel>
                     
