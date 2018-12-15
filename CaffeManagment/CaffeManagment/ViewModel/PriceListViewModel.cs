@@ -81,7 +81,7 @@ namespace CaffeManagment.ViewModel
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine($"Greska : {ex.Message}");
                 }
 
             }

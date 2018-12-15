@@ -20,11 +20,11 @@ namespace CaffeManagment.ViewModel
         private string nazivStola;
         private bool selektovanSto;
         private ObservableCollection<DrinkWithPriceAndQuantity> picaDataSource;
-        private int ukupnoZaSto;
-        private int ukupnoZaSve;
+        private float ukupnoZaSto;
+        private float ukupnoZaSve;
         private bool stampajSto;
         private bool stampajSve;
-        private Dictionary<string, Table> tables;
+        private ObservableCollection<Table> tables;
         private Table selectedTable;
 
         #region Commands
@@ -33,6 +33,7 @@ namespace CaffeManagment.ViewModel
         public MyICommand SviNaloziCommand { get; private set; }
         public MyICommand StampajStoCommand { get; private set; }
         public MyICommand StampajSveCommand { get; private set; }
+        
         #endregion
 
         public TablesViewModel()
@@ -92,13 +93,36 @@ namespace CaffeManagment.ViewModel
 
         private void Test()
         {
-            Tables = new Dictionary<string, Table>();
-            for (int i = 0; i < 25; i++)
+            //kod za generisanje novih praznih stolova
+
+            /* Tables = new ObservableCollection<Table>();
+             for (int i = 0; i < 25; i++)
+             {
+                 Table t = new Table();
+                 t.OznakaStola = $"sto_{i}";
+                 t.StanjeStola = Enumerations.State.EMPTY;
+                 t.Poruceno = new ObservableCollection<DrinkWithPriceAndQuantity>();
+                 t.Waiter = Username;
+                 Tables.Add(t);
+             }
+
+             if (DataSourceUtil.Instance.WriteTables(Tables))
+             {
+                 Console.WriteLine("Stolovi uspesno upisani.");
+             }
+             else
+             {
+                 Console.WriteLine("Stolovi nisu uspesno upisani!!!");
+             }*/
+            var pom = DataSourceUtil.Instance.ReadTables();
+            if (pom != null)
             {
-                Table t = new Table();
-                t.OznakaStola = $"sto{i}";
-                t.StanjeStola = Enumerations.State.EMPTY;
-                Tables.Add(t.OznakaStola,t);
+                Tables = pom;
+                PicaDataSource = new ObservableCollection<DrinkWithPriceAndQuantity>();
+            }
+            else
+            {
+                Console.WriteLine("Neuspesno ucitavanje stolova");
             }
         }
 
@@ -134,6 +158,12 @@ namespace CaffeManagment.ViewModel
         {
             SelectedTable = t;
             OnPropertyChanged(nameof(NazivStola));
+            var pom = DataSourceUtil.Instance.ReadTables();
+            if (pom != null)
+            {
+                Tables = pom;
+                PicaDataSource = t.Poruceno;
+            }
         }
 
         public string NazivStola
@@ -144,8 +174,11 @@ namespace CaffeManagment.ViewModel
             }
             set
             {
+                Tables.FirstOrDefault(x => x.Id == SelectedTable.Id).OznakaStola = value;
                 SelectedTable.OznakaStola = value;
-                OnPropertyChanged(NazivStola);
+                OnPropertyChanged(nameof(NazivStola));
+                OnPropertyChanged(nameof(Tables));
+                DataSourceUtil.Instance.WriteTables(Tables);
                 MainWindowViewModel.Instance.NotifySelectionChanged(SelectedTable);
             }
         }
@@ -202,7 +235,7 @@ namespace CaffeManagment.ViewModel
             }
         }
 
-        public int UkupnoZaSto
+        public float UkupnoZaSto
         {
             get
             {
@@ -215,7 +248,7 @@ namespace CaffeManagment.ViewModel
             }
         }
 
-        public int UkupnoZaSve
+        public float UkupnoZaSve
         {
             get
             {
@@ -228,20 +261,8 @@ namespace CaffeManagment.ViewModel
             }
         }
 
-        public ObservableCollection<DrinkWithPriceAndQuantity> PicaDataSource
-        {
-            get
-            {
-                return picaDataSource;
-            }
-            set
-            {
-                picaDataSource = value;
-                OnPropertyChanged("PicaDataSource");
-            }
-        }
 
-        public Dictionary<string, Table> Tables
+        public ObservableCollection<Table> Tables
         {
             get { return tables; }
             set
@@ -264,6 +285,21 @@ namespace CaffeManagment.ViewModel
                 {
                     SelektovanSto = true;
                 }
+                PicaDataSource = SelectedTable.Poruceno;
+            }
+        }
+
+        public ObservableCollection<DrinkWithPriceAndQuantity> PicaDataSource
+        {
+            get => picaDataSource;
+            set
+            {
+                picaDataSource = value;
+                OnPropertyChanged(nameof(PicaDataSource));
+                UkupnoZaSto = picaDataSource.Sum(item => item.Kolicina * item.Cena);
+                OnPropertyChanged(nameof(UkupnoZaSto));
+                UkupnoZaSve = Tables.Sum(item => item.Poruceno.Sum(item1 => item1.Kolicina * item1.Cena));
+                OnPropertyChanged(nameof(UkupnoZaSve));
             }
         }
 

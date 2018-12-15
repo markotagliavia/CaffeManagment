@@ -3,6 +3,7 @@ using CaffeManagment.View;
 using CaffeManagment.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace CaffeManagment.Common
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 
-            var tables = value as Dictionary<string, Table>;
+            var tables = value as ObservableCollection<Table>;
             if (tables != null)
             {
                 var gridView = new Grid();
@@ -43,7 +44,7 @@ namespace CaffeManagment.Common
 
                 int row = 0;
                 int column = 0;
-                foreach (var table in tables.Values)
+                foreach (var table in tables)
                 {
                     var tablecontrol = new SingleTableView(table);
                     Grid.SetRow(tablecontrol, row);

@@ -51,6 +51,7 @@ namespace CaffeManagment.ViewModel
             piceLevo = new ObservableCollection<Drink>();
             piceDesno = new ObservableCollection<DrinkWithPriceAndQuantity>();
             PopulatePiceLevoGrid();
+            PopulatePiceDesnoGrid();
             DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(PiceLevo);
         }
 
@@ -62,6 +63,7 @@ namespace CaffeManagment.ViewModel
             {
                 if (w.GetType().Equals(typeof(AddRemoveDrinkForTableView)))
                 {
+                    PiceDesno.Clear();
                     w.Close();
                 }
             }
@@ -69,18 +71,35 @@ namespace CaffeManagment.ViewModel
 
         private void SacuvajExecute(object obj)
         {
-            ObservableCollection<Table> pom;
-            if ((pom = DataSourceUtil.Instance.ReadTables()) != null)
+            try
             {
-                pom.FirstOrDefault(x => x.OznakaStola.Equals(tableForEdit.OznakaStola)).Poruceno = PiceDesno;
+                tableForEdit.Poruceno = PiceDesno;
+                if (PiceDesno.Count > 0)
+                {
+                    tableForEdit.StanjeStola = Enumerations.State.BUSY;
+                }
+                else
+                {
+                    tableForEdit.StanjeStola = Enumerations.State.EMPTY;
+                }
+                var pom = DataSourceUtil.Instance.ReadTables();
+                pom.FirstOrDefault(x => x.Id == tableForEdit.Id).StanjeStola = tableForEdit.StanjeStola;
+                pom.FirstOrDefault(x => x.Id == tableForEdit.Id).Poruceno = tableForEdit.Poruceno;
                 if (DataSourceUtil.Instance.WriteTables(pom))
                 {
+                    ((TablesViewModel)MainWindowViewModel.Instance.CurrentViewModel).Tables = DataSourceUtil.Instance.ReadTables();
+                    MainWindowViewModel.Instance.NotifySelectionChanged(pom.FirstOrDefault(x => x.Id == tableForEdit.Id));
                     System.Media.SystemSounds.Asterisk.Play();
+                    OtkaziExecute(null);
                 }
                 else
                 {
                     MessageBox.Show("Greška, poručena pića nisu sačuvana.");
                 }
+            }
+            catch (Exception exe)
+            {
+                Console.WriteLine($"Greška, poručena pića nisu sačuvana. Greska je {exe.Message}");
             }
         }
 
@@ -247,6 +266,10 @@ namespace CaffeManagment.ViewModel
             }
         }
 
+        private void PopulatePiceDesnoGrid()
+        {
+            PiceDesno = tableForEdit.Poruceno;
+        }
         #endregion
     }
 }

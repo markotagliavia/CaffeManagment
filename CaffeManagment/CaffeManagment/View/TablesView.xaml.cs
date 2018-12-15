@@ -28,8 +28,6 @@ namespace CaffeManagment.View
             TablesUIConverter t = new TablesUIConverter();
             this.DataContext = new TablesViewModel();
             //Tables = t.Convert((DataContext as TablesViewModel).Tables,null, Tables, null) as Grid;
-
-
         }
     }
 }

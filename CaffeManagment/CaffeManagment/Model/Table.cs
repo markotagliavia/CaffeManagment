@@ -12,6 +12,8 @@ namespace CaffeManagment.Model
     [Serializable]
     public class Table
     {
+        private Guid id;
+
         private string oznakaStola;
 
         private string waiter;
@@ -19,6 +21,11 @@ namespace CaffeManagment.Model
         private State stanjeStola;
 
         private ObservableCollection<DrinkWithPriceAndQuantity> poruceno;
+
+        public Table()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public string OznakaStola
         {
@@ -41,5 +48,7 @@ namespace CaffeManagment.Model
             get { return stanjeStola; }
             set { stanjeStola = value; }
         }
+
+        public Guid Id { get => id; set => id = value; }
     }
 }

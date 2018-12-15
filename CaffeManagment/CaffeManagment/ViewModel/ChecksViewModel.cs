@@ -107,7 +107,14 @@ namespace CaffeManagment.ViewModel
                 if (!racuni.ElementAt(selektovaniIndeks).Storniran)
                 {
                     racuni.ElementAt(selektovaniIndeks).Storniran = true;
-                    //TO DO : Serijalizuj
+                    if (DataSourceUtil.Instance.WriteChecks(racuni, racuni.ElementAt(selektovaniIndeks).DateTime))
+                    {
+                        Console.WriteLine("Uspesno serijalizovani racuni");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Greska prilikom serijalizacije racuna - storno");
+                    }
                 }
                 else
                 {

@@ -14,7 +14,7 @@
 
             <StackPanel Orientation="Vertical"  HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                    <Button Content="Filtriraj" HorizontalAlignment="Center" FontSize="20" Command="{Binding FilterCommand}"/>
+                    <Button Content="Filtriraj" HorizontalAlignment="Center" FontSize="15" Command="{Binding FilterCommand}"/>
                     <Label Content=" po : " FontSize="17" FontWeight="Bold"/>
                     <TextBox Text="{Binding SearchText}" Width="100"/>
                 </StackPanel>

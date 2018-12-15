@@ -20,10 +20,17 @@ namespace CaffeManagment.ViewModel
         public SingleTableViewModel(Table t)
         {
             SelectedTable = t;
+            if (t.Poruceno.Count > 0)
+            {
+                t.StanjeStola = State.BUSY;
+            }
+            else
+            {
+                t.StanjeStola = State.EMPTY;
+            }
             SetColor(t.StanjeStola);
             TableClickedCommand = new MyICommand(TableClicked);
             MainWindowViewModel.Instance.TableChanged += HandleTableChanged;
-
 
         }
 
@@ -34,7 +41,13 @@ namespace CaffeManagment.ViewModel
 
         private void HandleTableChanged(Table t)
         {
-            OnPropertyChanged(nameof(SelectedTable));
+            if (t.Id == SelectedTable.Id)
+            {
+                SelectedTable = t;
+                SetColor(t.StanjeStola);
+                OnPropertyChanged(nameof(SelectedTable));
+            }
+           
             
         }
 
@@ -74,7 +87,7 @@ namespace CaffeManagment.ViewModel
             switch (state)
             {
                 case State.BUSY:
-                    c1 = System.Windows.Media.Color.FromRgb(236, 109, 24);
+                    c1 = System.Windows.Media.Color.FromRgb(255, 77, 77);
                     TableColor = new SolidColorBrush(c1);
                     break;
                 case State.EMPTY:
