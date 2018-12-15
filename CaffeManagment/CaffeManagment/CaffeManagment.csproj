@@ -95,6 +95,7 @@
     <Compile Include="View\ChecksView.xaml.cs">
       <DependentUpon>ChecksView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DigetTextBox.cs" />
     <Compile Include="View\PriceListItemView.xaml.cs">
       <DependentUpon>PriceListItemView.xaml</DependentUpon>
     </Compile>

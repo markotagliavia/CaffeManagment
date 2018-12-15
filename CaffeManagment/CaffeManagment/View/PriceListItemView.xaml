@@ -1,33 +1,67 @@
-﻿<UserControl x:Class="CaffeManagment.View.PriceListItemView"
+﻿<Controls:MetroWindow x:Class="CaffeManagment.View.PriceListItemView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:CaffeManagment.View"
              xmlns:viewModel="clr-namespace:CaffeManagment.ViewModel"
              xmlns:data="clr-namespace:CaffeManagment.Model"
+             xmlns:control="clr-namespace:CaffeManagment.Common"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid Background="CornflowerBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
-            <Button Width="50" Height="50" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Command="{Binding BackCommand}" Content="Nazad">
-            </Button>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="310"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Grid.Row="0">
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
-                        
+                        <Label Content="Šifra pića:" FontWeight="Bold" Width="100"></Label>
+                        <TextBox Width="200" Text="{Binding PriceListItem.Drink.SifraPica}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Naziv pića:" FontWeight="Bold" Width="100"></Label>
+                        <TextBox Width="200" Text="{Binding PriceListItem.Drink.NazivPica}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Tip pića:" FontWeight="Bold" Width="100"></Label>
+                        <ComboBox Name="tippica" Width="200" SelectedItem="{Binding PriceListItem.Drink.TipPica}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Poreklo pića:" FontWeight="Bold" Width="100"></Label>
+                        <ComboBox Name="poreklo" Width="200" SelectedItem="{Binding PriceListItem.Drink.Poreklo}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Cena:" FontWeight="Bold" Width="100"></Label>
+                        <local:DigetTextBox Width="80" ></local:DigetTextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Akcija:" FontWeight="Bold" Width="100"></Label>
+                        <CheckBox IsChecked="{Binding PriceListItem.Action}"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Važi od:" FontWeight="Bold" Width="100"></Label>
+                        <DatePicker Width="200" SelectedDate="{Binding PriceListItem.StartDateTime, Mode=TwoWay}"></DatePicker>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+            <Button Content="Dodaj" Command="{Binding AddNewPriceItem}" Margin="20,0,460,0" Width="100" />
+        </StackPanel>
     </Grid>
-</UserControl>
+    
+</Controls:MetroWindow>

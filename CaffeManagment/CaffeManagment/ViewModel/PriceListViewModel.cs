@@ -1,5 +1,6 @@
 ﻿using CaffeManagment.Common;
 using CaffeManagment.Model;
+using CaffeManagment.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,6 +22,15 @@ namespace CaffeManagment.ViewModel
         public PriceListViewModel()
         {
             priceListItems = new ObservableCollection<PriceListItem>();
+            var priceList = DataSourceUtil.Instance.ReadPriceList();
+            if (priceList != null)
+            {
+                foreach (var item in priceList.Items)
+                {
+                    priceListItems.Add(item.Value);
+                }
+            }
+            
             AddNewPriceItem = new MyICommand(OnAdd,CanAdd);
             DefaultView = CollectionViewSource.GetDefaultView(priceListItems);
         }
@@ -39,15 +49,8 @@ namespace CaffeManagment.ViewModel
 
         public void OnAdd()
         {
-            //CurrentNote.Validate();
-            //if (CurrentNote.IsValid)
-            //{
-            //    Notes.Add(new Note()
-            //    {
-            //        Title = CurrentNote.Title,
-            //        Description = CurrentNote.Description
-            //    });
-            //}
+            PriceListItemView priceList = new PriceListItemView();
+            priceList.Show();
 
         }
 

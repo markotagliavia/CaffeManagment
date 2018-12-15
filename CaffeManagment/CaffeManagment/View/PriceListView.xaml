@@ -24,7 +24,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
             <Label Content="Pretraga po : " Margin="20,10,0,0" Width="100" FontSize="14"/>
-            <ComboBox x:Name="comboBoxSearch"  Margin="10,0,0,0" Height="25" Width="120" Foreground="White">
+            <ComboBox x:Name="comboBoxSearch"  Margin="10,0,0,0" Height="25" Width="120" Foreground="Black">
                 <ComboBoxItem  IsSelected="True" Content="/"/>
                 <ComboBoxItem  Content="Oznaci"/>
                 <ComboBoxItem Content="Ceni"/>
