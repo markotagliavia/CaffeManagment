@@ -6,14 +6,14 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:CaffeManagment.View"
              mc:Ignorable="d" 
-             Height="550" Width="800">
+             Height="560" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="CornflowerBlue">
         <StackPanel Orientation="Vertical">
-            <Label Content="{Binding ImeStola}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="5,10,0,20"/>
+            <Label Content="{Binding ImeStola}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="5,10,0,20"/>
 
-            <StackPanel Orientation="Vertical" Height="400" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical"  HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" Margin="5,0,0,20">
-                    <Label Content="Filtriraj po : " HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Label Content="Filtriraj po : " HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
                     <TextBox Text="{Binding SearchText}" Width="100"/>
                 </StackPanel>
 
@@ -22,7 +22,7 @@
 
                     <StackPanel Orientation="Vertical">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding PiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="300">
+                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding DefaultViewPiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="300">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Šifra" Binding="{Binding Id}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
@@ -32,15 +32,15 @@
                         </ScrollViewer>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <Label Content="Količina : " FontSize="14" HorizontalAlignment="Left" FontWeight="Bold"/>
+                            <Label Content="Količina : " FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" />
                             <TextBox Text="{Binding KolicinaText}" Width="100" Margin="20,0,0,0" Foreground="White"/>
                         </StackPanel>
                     </StackPanel>
                     
                     <StackPanel Orientation="Vertical" Height="300" Width="50">
-                        <Button Content=">>" Margin="10,120,0,0" Width="30" Height="30" Padding="0" Background="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=piceLevoGrid,Path=SelectedIndex}" IsEnabled="{Binding AddEnabled}">
+                        <Button Content=">>" Margin="10,100,0,0" Width="30" Height="30" FontSize="20" Padding="0" Background="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=piceLevoGrid,Path=SelectedIndex}" IsEnabled="{Binding AddEnabled}">
                         </Button>
-                        <Button Content="&lt;&lt;" Width="30" Height="30" Margin="10,10,0,0" Padding="0" Background="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding RemoveCommand}" CommandParameter="{Binding ElementName=piceDesnoGrid,Path=SelectedIndex}" IsEnabled="{Binding RemoveEnabled}">
+                        <Button Content="&lt;&lt;" Width="30" Height="30" Margin="10,20,0,0"  FontSize="20" Padding="0" Background="White"  VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding RemoveCommand}" CommandParameter="{Binding ElementName=piceDesnoGrid,Path=SelectedIndex}" IsEnabled="{Binding RemoveEnabled}">
                         </Button>
                     </StackPanel>
 
@@ -59,8 +59,8 @@
 
 
             <StackPanel Orientation="Horizontal" Margin="0,35,0,0" HorizontalAlignment="Center">
-                <Button x:Name="sacuvajButton" Content="Sačuvaj" Command="{Binding SacuvajCommand}"/>
-                <Button x:Name="otkaziButton" Content="Otkaži" Margin="20,0,0,0" Command="{Binding OtkaziCommand}"/>
+                <Button x:Name="sacuvajButton" Content="Sačuvaj" Command="{Binding SacuvajCommand}" FontSize="17"/>
+                <Button x:Name="otkaziButton" Content="Otkaži" Margin="20,0,0,0" Command="{Binding OtkaziCommand}" FontSize="17"/>
             </StackPanel>
 
         </StackPanel>

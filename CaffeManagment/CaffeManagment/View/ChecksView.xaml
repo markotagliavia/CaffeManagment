@@ -10,12 +10,8 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical" Height="400" Margin="40,20,0,0">
                 <StackPanel Orientation="Horizontal" Margin="5,0,0,20">
-                    <Label Content="Filtriraj od : " FontWeight="Bold"/>
-                    <DatePickerTextBox>
-                    </DatePickerTextBox>
-                    <Label Content="Filtriraj do : " FontWeight="Bold"/>
-                    <DatePickerTextBox>
-                    </DatePickerTextBox>
+                    <Label Content="Filtriraj za : " FontWeight="Bold" FontSize="20"/>
+                    <DatePicker SelectedDate="{Binding DatumOd}"/>
                 </StackPanel>
 
 
@@ -33,7 +29,7 @@
                     </ScrollViewer>
 
                     <StackPanel Orientation="Vertical" Margin="50,0,0,0">
-                        <Label Content="Pice :" FontWeight="Bold" />
+                        <Label Content="Piće :" FontWeight="Bold" FontSize="20"/>
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="5,0,5,0">
                             <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="piceGrid" ItemsSource="{Binding Pica, Mode=OneTime}">
                                 <DataGrid.Columns>
@@ -45,11 +41,18 @@
                         </ScrollViewer>
                     </StackPanel>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Ukupno : " FontSize="20" FontWeight="Bold"/>
+                    <Label Content="{Binding UkupnoSve}" FontSize="20" FontWeight="Bold"/>
+                    <Label Content="RSD " FontSize="20" FontWeight="Bold"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,0,0,40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button x:Name="stampajSelektovanButton" Content="Štampaj označen" IsEnabled="{Binding SelektovanRacun}" Command="{Binding StampajCommand}"/>
-            <Button x:Name="zatvoriButton" Content="Zatvori" Margin="20,0,0,0" Command="{Binding OtkaziCommand}"/>
+            <Button x:Name="stampajSelektovanButton" Content="Štampaj označen" FontSize="17" IsEnabled="{Binding SelektovanRacun}" Command="{Binding StampajCommand}"/>
+            <Button x:Name="stornirajButton" Content="Storniraj" Margin="20,0,0,0" FontSize="17" IsEnabled="{Binding SelektovanRacun}" Command="{Binding StornirajCommand}"/>
+            <Button x:Name="exportButton" Content="Izveštaj" Margin="20,0,0,0" FontSize="17" Command="{Binding ExportCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

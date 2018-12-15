@@ -52,9 +52,9 @@ namespace CaffeManagment.Common
             }
         }
 
-        public bool WriteChecks(ObservableCollection<Check> checks)
+        public bool WriteChecks(ObservableCollection<Check> checks, DateTime dateTime)
         {
-            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, racuni);
+            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Racuni", $"{dateTime.Year}_{dateTime.Month}_{dateTime.Day}_{racuni}");
             try
             {
                 var f_fileStream = new FileStream(destPath1, FileMode.Create, FileAccess.Write);
@@ -126,9 +126,9 @@ namespace CaffeManagment.Common
             }
         }
 
-        public ObservableCollection<Check> ReadChecks()
+        public ObservableCollection<Check> ReadChecks(DateTime dateTime)
         {
-            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, racuni);
+            string destPath1 = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Racuni", $"{dateTime.Year}_{dateTime.Month}_{dateTime.Day}_{racuni}");
             try
             {
                 var f_fileStream = File.OpenRead(destPath1);

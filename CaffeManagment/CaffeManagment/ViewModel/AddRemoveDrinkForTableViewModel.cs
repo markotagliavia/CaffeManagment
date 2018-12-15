@@ -4,10 +4,12 @@ using CaffeManagment.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 
 namespace CaffeManagment.ViewModel
 {
@@ -24,6 +26,7 @@ namespace CaffeManagment.ViewModel
         private int _selectedPiceLevo = -1;
         private int _selectedPiceDesno = -1;
         private ObservableCollection<Drink> piceLevo;
+        private ICollectionView defaultViewPiceLevo;
         private ObservableCollection<DrinkWithPriceAndQuantity> piceDesno;
         #endregion
 
@@ -32,6 +35,7 @@ namespace CaffeManagment.ViewModel
         public MyICommand<string> OtkaziCommand { get; private set; }
         public MyICommand<int> AddCommand { get; private set; }
         public MyICommand<int> RemoveCommand { get; private set; }
+        public MyICommand<object> FilterCommand { get; private set; }
         #endregion
 
         public AddRemoveDrinkForTableViewModel(User user, Table t)
@@ -40,12 +44,14 @@ namespace CaffeManagment.ViewModel
             OtkaziCommand = new MyICommand<string>(OtkaziExecute);
             AddCommand = new MyICommand<int>(AddExecute);
             RemoveCommand = new MyICommand<int>(RemoveExecute);
+            FilterCommand = new MyICommand<object>(FilterExecute);
             userOnSession = user;
             tableForEdit = t;
             imeStola = tableForEdit.OznakaStola;
             piceLevo = new ObservableCollection<Drink>();
             piceDesno = new ObservableCollection<DrinkWithPriceAndQuantity>();
-            PopulateProizvodiGrid();
+            PopulatePiceLevoGrid();
+            DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(PiceLevo);
             KolicinaText = "";
             searchText = "";
         }
@@ -65,7 +71,34 @@ namespace CaffeManagment.ViewModel
 
         private void SacuvajExecute(object obj)
         {
-            // TO DO
+            ObservableCollection<Table> pom;
+            if ((pom = DataSourceUtil.Instance.ReadTables()) != null)
+            {
+                pom.FirstOrDefault(x => x.OznakaStola.Equals(tableForEdit.OznakaStola)).Poruceno = PiceDesno;
+                if (DataSourceUtil.Instance.WriteTables(pom))
+                {
+                    System.Media.SystemSounds.Asterisk.Play();
+                }
+                else
+                {
+                    MessageBox.Show("Greška, poručena pića nisu sačuvana.");
+                }
+            }
+        }
+
+        private void FilterExecute(object obj)
+        {
+            string pom = SearchText.Trim().ToUpper();
+            if (pom.Equals("") || String.IsNullOrEmpty(pom) || String.IsNullOrWhiteSpace(pom))
+            {
+                DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(PiceLevo);
+            }
+            else
+            {
+                DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(DefaultViewPiceLevo);
+                DefaultViewPiceLevo.Filter =
+                        w => ((Drink)w).SifraPica.ToUpper().Contains(pom) || ((Drink)w).NazivPica.ToUpper().Contains(pom);
+            }
         }
 
         private void RemoveExecute(int obj)
@@ -76,7 +109,7 @@ namespace CaffeManagment.ViewModel
             }
             else
             {
-                MessageBox.Show("Morate selektovati odgovarajuću kolonu.");
+                MessageBox.Show("Morate selektovati dodato piće.");
             }
         }
 
@@ -94,13 +127,13 @@ namespace CaffeManagment.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Niste odabrali pice iz tabele.");
+                    MessageBox.Show("Niste odabrali piće iz tabele.");
                 }
             }
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
-                MessageBox.Show("Niste uneli validnu vrednost za kolicinu.");
+                MessageBox.Show("Niste uneli validnu vrednost za količinu.");
             }
         }
         #endregion
@@ -109,7 +142,7 @@ namespace CaffeManagment.ViewModel
 
         public User UserOnSession { get => userOnSession; set => userOnSession = value; }
         public Table TableForEdit { get => tableForEdit; set { tableForEdit = value; OnPropertyChanged("TableForEdit"); } }
-
+        public ICollectionView DefaultViewPiceLevo { get => defaultViewPiceLevo; set => defaultViewPiceLevo = value; }
         public string KolicinaText { get => kolicinaText; set { kolicinaText = value; OnPropertyChanged("KolicinaText"); } }
 
         public string ImeStola { get => imeStola; set { imeStola = value; OnPropertyChanged("ImeStola"); } }
@@ -160,6 +193,7 @@ namespace CaffeManagment.ViewModel
             set
             {
                 _selectedPiceLevo = value;
+                OnPropertyChanged("SelectedPiceLevo");
                 if (_selectedPiceLevo> -1)
                 {
                     AddEnabled = true;
@@ -177,6 +211,7 @@ namespace CaffeManagment.ViewModel
             set
             {
                 _selectedPiceDesno = value;
+                OnPropertyChanged("SelectedPiceDesno");
                 if (_selectedPiceDesno > -1)
                 {
                     RemoveEnabled = true;
@@ -194,13 +229,14 @@ namespace CaffeManagment.ViewModel
             set
             {
                 searchText = value;
+                OnPropertyChanged("SearchText");
                 FilterTable(searchText);
             }
         }
         #endregion
 
         #region HelperMethods
-        private void PopulateProizvodiGrid()
+        private void PopulatePiceLevoGrid()
         {
             // TO DO
         }

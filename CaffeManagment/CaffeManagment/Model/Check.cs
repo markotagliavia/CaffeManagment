@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace CaffeManagment.Model
     {
         private string waiter;
         private DateTime dateTime;
-        private Dictionary<int, PriceListItem> priceListItem;
+        private ObservableCollection<DrinkWithPriceAndQuantity> pica;
         private int id;
         private bool storniran;
         private float ukupnoPara;
@@ -30,10 +31,10 @@ namespace CaffeManagment.Model
             get { return dateTime; }
             set { dateTime = value; }
         }
-        public Dictionary<int, PriceListItem> PriceListItem
+        public ObservableCollection<DrinkWithPriceAndQuantity> Pica
         {
-            get { return priceListItem; }
-            set { priceListItem = value; }
+            get { return pica; }
+            set { pica = value; }
         }
         public string Waiter
         {

@@ -54,7 +54,6 @@ namespace CaffeManagment.ViewModel
             ButtonOpenMenu = Visibility.Visible;
             LoadPriceList();
             //OnNav(Navigation.TABLES);
-
         }
 
         #region CommandsImplementation
