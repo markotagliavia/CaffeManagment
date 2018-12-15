@@ -24,19 +24,18 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0" Background="CornflowerBlue">
             <Label Content="Pretraga po : " Margin="20,10,0,0" Width="120" FontSize="17" FontWeight="Bold"/>
-            <ComboBox x:Name="comboBoxSearch"  Margin="10,0,0,0" Height="25" Width="120" Foreground="Black">
-                <ComboBoxItem  IsSelected="True" Content="/"/>
-                <ComboBoxItem  Content="Oznaci"/>
-                <ComboBoxItem Content="Ceni"/>
-                <ComboBoxItem Content="Nazivu"/>
-                <ComboBoxItem Content="Tipu"/>
+            <ComboBox x:Name="comboBoxSearch"  Margin="10,0,0,0" Height="25" Width="120" Foreground="Black" ItemsSource="{Binding FilterList}" SelectedItem="{Binding SelectedFilter}">
 
             </ComboBox>
 
 
-            <!--<TextBox x:Name="textBoxSearch" Margin="20,0,20,0" MaxLength="30" Height="25" Width="120" Text="{Binding TextSearch}" Foreground="White"/>
-
-            <Button Content="Pretraži" Command="{Binding PretraziFakturuCommand}" CommandParameter="{Binding Text, ElementName=comboBoxSearch}"  Margin="0,0,0,0"/>-->
+            <TextBox x:Name="textBoxSearch" Margin="20,0,20,0" MaxLength="30" Height="25" Width="120"  Foreground="Black" Visibility="{Binding TextVisiblity}" Text="{Binding TextSearch}">
+            </TextBox>
+            <local:DigetTextBox Margin="20,0,20,0" MaxLength="30" Height="25" Width="120" Visibility="{Binding DigitVisibility}" Text="{Binding NumberSearch}">
+                
+            </local:DigetTextBox>
+            <ComboBox Margin="20,0,20,0" Height="25" Width="130" Visibility="{Binding ComboVisiblity}" ItemsSource="{Binding Enums}" SelectedItem="{Binding SelectedEnum}"></ComboBox>
+            <Button Content="Pretraži" Visibility="{Binding PretraziVisiblity}" Command="{Binding SearchPriceItem}" Margin="10,0,0,0" Height="25" Width="100"/>
         </StackPanel>
 
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="1">
@@ -53,6 +52,8 @@
 
         <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Background="CornflowerBlue">
             <Button Content="Nova cena" Command="{Binding AddNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
+            <Button Content="Izmena cene" Command="{Binding EditNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
+            <Button Content="Brisanje cene" Command="{Binding DeleteNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -9,7 +9,7 @@
              xmlns:viewModel="clr-namespace:CaffeManagment.ViewModel"
              xmlns:data="clr-namespace:CaffeManagment.Model"
              xmlns:control="clr-namespace:CaffeManagment.Common"
-             Height="450" Width="400" WindowStartupLocation="CenterScreen">
+             Height="400" Width="500" WindowStartupLocation="CenterScreen">
     <Grid Background="CornflowerBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -30,10 +30,14 @@
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Šifra pića:" FontWeight="Bold" Width="100"></Label>
                         <TextBox Width="200" Text="{Binding PriceListItem.SifraPica}"/>
+                        <TextBlock Text="{Binding PriceListItem.ValidationErrors[SifraPica]}"
+                               Foreground="Red"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Naziv pića:" FontWeight="Bold" Width="100"></Label>
                         <TextBox Width="200" Text="{Binding PriceListItem.NazivPica}"/>
+                        <TextBlock Text="{Binding PriceListItem.ValidationErrors[NazivPica]}"
+                               Foreground="Red"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Tip pića:" FontWeight="Bold" Width="100"></Label>

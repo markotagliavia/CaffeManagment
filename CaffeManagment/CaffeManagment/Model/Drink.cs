@@ -61,7 +61,14 @@ namespace CaffeManagment.Model
             {
                 this.ValidationErrors[nameof(SifraPica)] = "Šifra pića je obavezno polje.";
             }
-            //to do da je unique
+            
+            var priceList = DataSourceUtil.Instance.ReadPriceList();
+            if (priceList.Items.Values.Any(x => x.SifraPica.Equals(this.SifraPica) && x.Id != this.Id))
+            {
+                this.ValidationErrors[nameof(SifraPica)] = "Šifra pića je jedinstveno polje.";
+            }
+
+            
         }
     }
 
