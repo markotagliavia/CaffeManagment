@@ -6,14 +6,15 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:CaffeManagment.View"
              mc:Ignorable="d" 
-             Height="560" Width="800" WindowStartupLocation="CenterScreen">
+             Height="800" Width="800" WindowStartupLocation="CenterScreen">
     <Grid Background="CornflowerBlue">
         <StackPanel Orientation="Vertical">
             <Label Content="{Binding ImeStola}" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="5,10,0,20"/>
 
             <StackPanel Orientation="Vertical"  HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal" Margin="5,0,0,20">
-                    <Label Content="Filtriraj po : " HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Button Content="Filtriraj" HorizontalAlignment="Center" FontSize="20" Command="{Binding FilterCommand}"/>
+                    <Label Content=" po : " FontSize="17" FontWeight="Bold"/>
                     <TextBox Text="{Binding SearchText}" Width="100"/>
                 </StackPanel>
 
@@ -22,7 +23,7 @@
 
                     <StackPanel Orientation="Vertical">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding DefaultViewPiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="300">
+                            <DataGrid CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceLevo}" AutoGenerateColumns="False" x:Name="piceLevoGrid" ItemsSource="{Binding DefaultViewPiceLevo, Mode=OneWay}" VerticalAlignment="Top" Height="450">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Šifra" Binding="{Binding Id}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"></DataGridTextColumn>
@@ -33,7 +34,7 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                             <Label Content="Količina : " FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" />
-                            <TextBox Text="{Binding KolicinaText}" Width="100" Margin="20,0,0,0" Foreground="White"/>
+                            <TextBox Text="{Binding KolicinaText}" Width="100" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                     
@@ -45,7 +46,7 @@
                     </StackPanel>
 
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                        <DataGrid CanUserAddRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceDesno}" AutoGenerateColumns="False" x:Name="piceDesnoGrid" ItemsSource="{Binding PiceDesno, Mode=OneWay}" VerticalAlignment="Top" Height="300">
+                        <DataGrid CanUserAddRows="False" SelectionMode="Single" SelectedIndex="{Binding SelectedPiceDesno}" AutoGenerateColumns="False" x:Name="piceDesnoGrid" ItemsSource="{Binding PiceDesno, Mode=OneWay}" VerticalAlignment="Top" Height="450">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Šifra" Binding="{Binding Sifra}" IsReadOnly="True"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" IsReadOnly="True"></DataGridTextColumn>

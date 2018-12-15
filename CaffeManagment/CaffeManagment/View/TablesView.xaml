@@ -9,7 +9,7 @@
              xmlns:data="clr-namespace:CaffeManagment.Model"
              xmlns:WpfApplication="clr-namespace:CaffeManagment.Common" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="800">
     <UserControl.Resources>
         <WpfApplication:TablesUIConverter x:Key="TablesUIConverter" />
     </UserControl.Resources>
@@ -26,9 +26,9 @@
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Background="CornflowerBlue">
             <StackPanel Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Content="{Binding Username}" FontWeight="Bold" Margin="5,30,5,0"/>
-                <Button Content="Moj nalog" Margin="5,0,5,10" Width="80" Height="40"/>
-                <Button Content="Svi nalozi" Margin="5,0,5,10" Width="80" Height="40" Visibility="{Binding IsAdmin}"/>
+                <Label Content="{Binding Username}" FontWeight="Bold" Margin="5,30,5,0" FontSize="17"/>
+                <Button Content="Moj nalog" Margin="5,0,5,10" Width="115" Height="40" FontSize="17" Command="{Binding MojNalogCommand}"/>
+                <Button Content="Svi nalozi" Margin="5,0,5,10" Width="115" Height="40" FontSize="17" Visibility="{Binding IsAdmin}" Command="{Binding SviNaloziCommand}"/>
             </StackPanel>
         </StackPanel>
 
@@ -38,10 +38,10 @@
 
         <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Vertical" Background="CornflowerBlue">
             <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
-                <Label Content="Naziv :" FontWeight="Bold"/>
-                <TextBox Width="130" Text="{Binding NazivStola, Mode=TwoWay}" IsEnabled="{Binding SelektovanSto}"/>
+                <Label Content="Naziv :" FontWeight="Bold" FontSize="17"/>
+                <TextBox Width="150" Text="{Binding NazivStola, Mode=TwoWay}" IsEnabled="{Binding SelektovanSto}"/>
             </StackPanel>
-            <Label Content="Pice :" FontWeight="Bold" Margin="5,20,5,0"/>
+            <Label Content="Piće :" FontWeight="Bold" Margin="5,20,5,0" FontSize="17"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <DataGrid Margin="5,0,5,0" CanUserAddRows="False" IsReadOnly="True" Height="260" ItemsSource="{Binding PicaDataSource}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
@@ -52,16 +52,18 @@
                 </DataGrid>
             </ScrollViewer>
             <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
-                <Label Content="Za naplatu : " FontWeight="Bold"/>
-                <Label Content="{Binding UkupnoZaSto}"/>
+                <Label Content="Za naplatu : " FontWeight="Bold" FontSize="17"/>
+                <Label Content="{Binding UkupnoZaSto}" FontWeight="Bold" FontSize="17"/>
+                <Label Content=" RSD" FontWeight="Bold" FontSize="17" />
             </StackPanel>
-            <Button Content="Dodaj" Margin="5,20,5,0" IsEnabled="{Binding SelektovanSto}" Command="{Binding OtvoriStoCommand}"/>
-            <Button Content="Stampaj za sto" Margin="5,10,5,0" IsEnabled="{Binding StampajSto}"/> 
+            <Button Content="Dodaj" Margin="5,20,5,0" IsEnabled="{Binding SelektovanSto}" Command="{Binding OtvoriStoCommand}" FontSize="17"/>
+            <Button Content="Štampaj za sto" Margin="5,10,5,0" IsEnabled="{Binding StampajSto}" FontSize="17" Command="{Binding StampajStoCommand}"/> 
             <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
-                <Label Content="Za naplatu ukupno : " FontWeight="Bold"/>
-                <Label Content="{Binding UkupnoZaSve}"/>
+                <Label Content="Za naplatu ukupno : " FontWeight="Bold" FontSize="17"/>
+                <Label Content="{Binding UkupnoZaSve}" FontWeight="Bold" FontSize="17"/>
+                <Label Content=" RSD" FontWeight="Bold" FontSize="17" />
             </StackPanel>
-            <Button Content="Stampaj za sve" Margin="5,10,5,0" IsEnabled="{Binding StampajSve}"/>
+            <Button Content="Štampaj za sve" Margin="5,10,5,0" IsEnabled="{Binding StampajSve}" FontSize="17" Command="{Binding StampajSveCommand}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Orientation="Horizontal" Background="CornflowerBlue">

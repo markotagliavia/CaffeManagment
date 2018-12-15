@@ -28,7 +28,7 @@
                         </DataGrid>
                     </ScrollViewer>
 
-                    <StackPanel Orientation="Vertical" Margin="50,0,0,0">
+                    <StackPanel Orientation="Vertical" Margin="50,-37,0,0">
                         <Label Content="Piće :" FontWeight="Bold" FontSize="20"/>
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="5,0,5,0">
                             <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="piceGrid" ItemsSource="{Binding Pica, Mode=OneTime}">
@@ -42,7 +42,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
                     <Label Content="Ukupno : " FontSize="20" FontWeight="Bold"/>
                     <Label Content="{Binding UkupnoSve}" FontSize="20" FontWeight="Bold"/>
                     <Label Content="RSD " FontSize="20" FontWeight="Bold"/>

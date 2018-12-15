@@ -8,7 +8,7 @@
                       xmlns:views="clr-namespace:CaffeManagment.View"
                       xmlns:data="clr-namespace:CaffeManagment.Model"
                       Title="Caffe"
-                      Height="800"
+                      Height="850"
                       Width="1000"
                       Icon="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.png" Closing="Zatvaranje" WindowStartupLocation="CenterScreen">
 
@@ -65,7 +65,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding ViewModelTitle}" Foreground="Black" Background="CornflowerBlue" FontSize="20" FontWeight="Bold" Grid.Row="0"/>
+            <TextBlock Text="{Binding ViewModelTitle}" Foreground="Black" Background="CornflowerBlue" FontSize="20" Margin="0,0,0,0" FontWeight="Bold" FontStyle="Oblique" Grid.Row="0"/>
             <ContentControl Content="{Binding CurrentViewModel}"  Grid.Row="1" Grid.Column="0"/>
         </Grid>
     </Grid>

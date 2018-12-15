@@ -19,8 +19,8 @@ namespace CaffeManagment.ViewModel
         private User userOnSession;
         private Table tableForEdit;
         private string imeStola;
-        private string kolicinaText;
-        private string searchText;
+        private string kolicinaText = "1";
+        private string searchText = "";
         private bool addEnabled;
         private bool removeEnabled;
         private int _selectedPiceLevo = -1;
@@ -52,8 +52,6 @@ namespace CaffeManagment.ViewModel
             piceDesno = new ObservableCollection<DrinkWithPriceAndQuantity>();
             PopulatePiceLevoGrid();
             DefaultViewPiceLevo = CollectionViewSource.GetDefaultView(PiceLevo);
-            KolicinaText = "";
-            searchText = "";
         }
 
         #region CommandsImplementation
@@ -230,7 +228,7 @@ namespace CaffeManagment.ViewModel
             {
                 searchText = value;
                 OnPropertyChanged("SearchText");
-                FilterTable(searchText);
+                FilterExecute(null);
             }
         }
         #endregion
@@ -238,13 +236,19 @@ namespace CaffeManagment.ViewModel
         #region HelperMethods
         private void PopulatePiceLevoGrid()
         {
-            // TO DO
+            PriceList pom;
+            if ((pom = DataSourceUtil.Instance.ReadPriceList()) != null)
+            {
+                foreach (KeyValuePair<int, PriceListItem> pair in pom.Items)
+                {
+                    if (pair.Value.ActivePrice)
+                    {
+                        PiceLevo.Add(pair.Value.Drink);
+                    }
+                }
+            }
         }
 
-        private void FilterTable(string searchText)
-        {
-            // TO DO
-        }
         #endregion
     }
 }

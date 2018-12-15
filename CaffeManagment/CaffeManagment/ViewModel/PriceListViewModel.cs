@@ -50,7 +50,7 @@ namespace CaffeManagment.ViewModel
         public void OnAdd()
         {
             PriceListItemView priceList = new PriceListItemView();
-            priceList.Show();
+            priceList.ShowDialog();
 
         }
 

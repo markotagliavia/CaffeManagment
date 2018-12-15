@@ -1,6 +1,7 @@
 ﻿using CaffeManagment.Common;
 using CaffeManagment.Model;
 using CaffeManagment.View;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+
 
 namespace CaffeManagment.ViewModel
 {
@@ -64,7 +66,38 @@ namespace CaffeManagment.ViewModel
 
         private void ExportExecute(object obj)
         {
-            // TO DO
+            System.IO.Stream myStream;
+            OpenFileDialog thisDialog = new OpenFileDialog();
+
+            thisDialog.InitialDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Racuni");
+            thisDialog.Filter = "bin files (*.bin)|*.bin|All files (*.*)|*.*";
+            thisDialog.FilterIndex = 2;
+            thisDialog.RestoreDirectory = true;
+            thisDialog.Multiselect = true;
+            thisDialog.Title = "Izaberite fajlove";
+
+            if (thisDialog.ShowDialog() ?? true)
+            {
+                foreach (String file in thisDialog.FileNames)
+                {
+                    try
+                    {
+                        if ((myStream = thisDialog.OpenFile()) != null)
+                        {
+                            using (myStream)
+                            {
+                                //listBox1.Items.Add(file);
+                                //TO DO: open every file and build CSV
+                            }
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Neuspešno učitavanje fajlova. Originalna greška: " + ex.Message);
+                    }
+                }
+            }
         }
 
         private void StornirajExecute(object obj)
@@ -144,6 +177,7 @@ namespace CaffeManagment.ViewModel
             set
             {
                 datumOd = value;
+                PopulateGrid();
                 OnPropertyChanged("DatumOd");
             }
         }

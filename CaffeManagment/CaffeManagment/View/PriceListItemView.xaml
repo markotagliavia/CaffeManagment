@@ -9,8 +9,7 @@
              xmlns:viewModel="clr-namespace:CaffeManagment.ViewModel"
              xmlns:data="clr-namespace:CaffeManagment.Model"
              xmlns:control="clr-namespace:CaffeManagment.Common"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
+             Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Grid Background="CornflowerBlue">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -60,7 +59,7 @@
             </Grid>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
-            <Button Content="Dodaj" Command="{Binding AddNewPriceItem}" Margin="20,0,460,0" Width="100" />
+            <Button Content="Dodaj" Command="{Binding AddNewPriceItem}" Margin="20,0,0,0" Width="100" FontSize="17"/>
         </StackPanel>
     </Grid>
     

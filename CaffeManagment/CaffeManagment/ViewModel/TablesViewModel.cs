@@ -28,7 +28,11 @@ namespace CaffeManagment.ViewModel
         private Table selectedTable;
 
         #region Commands
-        public MyICommand OtvoriStoCommand { get; private set; } 
+        public MyICommand OtvoriStoCommand { get; private set; }
+        public MyICommand MojNalogCommand { get; private set; }
+        public MyICommand SviNaloziCommand { get; private set; }
+        public MyICommand StampajStoCommand { get; private set; }
+        public MyICommand StampajSveCommand { get; private set; }
         #endregion
 
         public TablesViewModel()
@@ -44,8 +48,35 @@ namespace CaffeManagment.ViewModel
             stampajSve = false;
             username = userOnSession.Username;
             OtvoriStoCommand = new MyICommand(OtvoriStoExecute);
+            MojNalogCommand = new MyICommand(MojNalogExecute);
+            SviNaloziCommand = new MyICommand(SviNaloziExecute);
+            StampajStoCommand = new MyICommand(StampajStoExecute);
+            StampajSveCommand = new MyICommand(StampajSveExecute);
             Test();
             MainWindowViewModel.Instance.TableChanged += HandleTableChanged;
+        }
+
+        #region Commands Implementation
+        private void StampajSveExecute()
+        {
+            //TO DO
+        }
+
+        private void StampajStoExecute()
+        {
+           //TO DO
+        }
+
+        private void SviNaloziExecute()
+        {
+            MessageBox.Show("U procesu razvoja...");
+            //TO DO
+        }
+
+        private void MojNalogExecute()
+        {
+            MessageBox.Show("U procesu razvoja...");
+            //TO DO
         }
 
         private void OtvoriStoExecute()
@@ -53,9 +84,11 @@ namespace CaffeManagment.ViewModel
             if (selectedTable != null)
             {
                 AddRemoveDrinkForTableView a = new AddRemoveDrinkForTableView(userOnSession, selectedTable);
-                a.Show();
+                a.ShowDialog();
             }
         }
+
+        #endregion
 
         private void Test()
         {
