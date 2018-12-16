@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,6 +79,9 @@ namespace CaffeManagment.ViewModel
 
             if (thisDialog.ShowDialog() ?? true)
             {
+                var csv = new StringBuilder();
+                csv.AppendLine(string.Format("Datum i vreme, Ukupno novca [RSD], Naziv stola, Poslužio"));
+                string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Izvestaj.csv");
                 foreach (String file in thisDialog.FileNames)
                 {
                     try
@@ -86,8 +90,23 @@ namespace CaffeManagment.ViewModel
                         {
                             using (myStream)
                             {
-                                //listBox1.Items.Add(file);
-                                //TO DO: open every file and build CSV
+                                var f_fileStream = File.OpenRead(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file));
+                                var f_binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                                ObservableCollection<Check> checks = (ObservableCollection<Check>)f_binaryFormatter.Deserialize(f_fileStream);
+                                f_fileStream.Close();
+
+                                foreach (Check c in checks)
+                                {
+                                    if (!c.Storniran)
+                                    {
+                                        var first = c.DateTime.ToString();
+                                        var second = c.UkupnoPara.ToString();
+                                        var third = c.NazivStola;
+                                        var fourth = c.Waiter;
+                                        var newLine = string.Format($"{first},{second},{third},{fourth}");
+                                        csv.AppendLine(newLine);
+                                    }
+                                }
                             }
                         }
                     }
@@ -97,6 +116,9 @@ namespace CaffeManagment.ViewModel
                         MessageBox.Show("Neuspešno učitavanje fajlova. Originalna greška: " + ex.Message);
                     }
                 }
+
+                File.WriteAllText(filePath, csv.ToString());
+                MessageBox.Show("Izveštaj je uspešno kreiran.");
             }
         }
 

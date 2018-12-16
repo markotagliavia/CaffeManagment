@@ -123,7 +123,7 @@ namespace CaffeManagment.ViewModel
                 return;
             }
             DialogResult dr = System.Windows.Forms.MessageBox.Show("Da li ste sigurni?",
-                      "Bisanje cene", MessageBoxButtons.YesNo);
+                      "Brisanje cene", MessageBoxButtons.YesNo);
             switch (dr)
             {
                 case DialogResult.Yes:
@@ -155,6 +155,11 @@ namespace CaffeManagment.ViewModel
 
         private void OnEdit()
         {
+            if (SelectedPriceListItem == null)
+            {
+                System.Windows.MessageBox.Show("Morate selektovati cenu koju želite da izmenite.");
+                return;
+            }
             PriceListItemView priceList = new PriceListItemView(Enumerations.Operation.EDIT,SelectedPriceListItem);
             priceList.ShowDialog();
         }

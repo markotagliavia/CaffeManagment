@@ -51,9 +51,9 @@
         </ScrollViewer>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Background="CornflowerBlue">
-            <Button Content="Nova cena" Command="{Binding AddNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
-            <Button Content="Izmena cene" Command="{Binding EditNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
-            <Button Content="Brisanje cene" Command="{Binding DeleteNewPriceItem}" Margin="20,5,0,5"  FontSize="17"/>
+            <Button Content="Nova cena" Command="{Binding AddNewPriceItem}" Margin="20,5,0,5"  FontSize="15"/>
+            <Button Content="Izmena cene" Command="{Binding EditNewPriceItem}" Margin="20,5,0,5"  FontSize="15"/>
+            <Button Content="Brisanje cene" Command="{Binding DeleteNewPriceItem}" Margin="20,5,0,5"  FontSize="15"/>
         </StackPanel>
     </Grid>
 </UserControl>

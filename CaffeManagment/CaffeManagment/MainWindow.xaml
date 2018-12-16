@@ -39,19 +39,19 @@
         <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Source="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.png" />
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="CornflowerBlue" x:Name="StackPanelMenu">
             <ListView x:Name="listView">
-                <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5" Selected="TablesCall" Background="CadetBlue">
+                <ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5" Selected="TablesCall" Background="GreenYellow">
                     <StackPanel Orientation="Horizontal" Margin="5 0">
-                        <TextBlock Text="STOLOVI" Margin="10" VerticalAlignment="Center"/>
+                        <TextBlock Text="STOLOVI" Margin="10" VerticalAlignment="Center" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" Selected="PriceListCall" Background="CadetBlue">
+                <ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5" Selected="PriceListCall" Background="GreenYellow">
                     <StackPanel Orientation="Horizontal" Margin="5 0">
-                        <TextBlock Text="CENOVNIK" Margin="10" VerticalAlignment="Center"/>
+                        <TextBlock Text="CENOVNIK" Margin="10" VerticalAlignment="Center" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5" Selected="ChecksCall" Background="CadetBlue">
+                <ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5" Selected="ChecksCall" Background="GreenYellow">
                     <StackPanel Orientation="Horizontal" Margin="5 0">
-                        <TextBlock Text="RAČUNI" Margin="10" VerticalAlignment="Center"/>
+                        <TextBlock Text="RAČUNI" Margin="10" VerticalAlignment="Center" FontWeight="Bold"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

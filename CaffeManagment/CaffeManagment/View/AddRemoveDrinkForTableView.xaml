@@ -16,7 +16,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
                     <Button Content="Filtriraj" HorizontalAlignment="Center" FontSize="15" Command="{Binding FilterCommand}"/>
                     <Label Content=" po : " FontSize="17" FontWeight="Bold"/>
-                    <TextBox Text="{Binding SearchText}" Width="100"/>
+                    <TextBox Text="{Binding SearchText}" Width="100" FontSize="17"/>
                 </StackPanel>
 
 
@@ -35,7 +35,7 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                             <Label Content="Količina : " FontSize="20" HorizontalAlignment="Left" FontWeight="Bold" />
-                            <local:DigetTextBox Text="{Binding KolicinaText}" Width="100" Margin="5,0,0,0"></local:DigetTextBox>
+                            <local:DigetTextBox Text="{Binding KolicinaText}" Width="100" Margin="5,0,0,0" FontSize="17"></local:DigetTextBox>
                         </StackPanel>
                     </StackPanel>
                     

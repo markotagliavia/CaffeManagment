@@ -39,7 +39,7 @@
         <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Vertical" Background="CornflowerBlue">
             <StackPanel Orientation="Horizontal" Margin="5,20,5,0">
                 <Label Content="Naziv :" FontWeight="Bold" FontSize="17"/>
-                <TextBox Width="150" Text="{Binding NazivStola, Mode=TwoWay}" IsEnabled="{Binding SelektovanSto}"/>
+                <TextBox Width="150" Text="{Binding NazivStola, Mode=TwoWay}" IsEnabled="{Binding SelektovanSto}" FontSize="17"/>
             </StackPanel>
             <Label Content="Piće :" FontWeight="Bold" Margin="5,20,5,0" FontSize="17"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">

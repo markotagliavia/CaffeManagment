@@ -35,8 +35,8 @@
 
         <Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.png" Stretch="Fill"/>
 
-        <TextBox x:Name="usernameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,63,0,0" MaxLength="30" Text="Korisničko ime" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="usernameTextBoxFocus" LostFocus="usernameTextBoxUnFocus" />
-        <PasswordBox x:Name="passBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,115,0,0" MaxLength="30" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="passwordBoxFocus" LostFocus="passwordBoxUnFocus" />
+        <TextBox x:Name="usernameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,63,0,0" MaxLength="30" Text="Korisničko ime" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="usernameTextBoxFocus" LostFocus="usernameTextBoxUnFocus" Foreground="White"/>
+        <PasswordBox x:Name="passBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,115,0,0" MaxLength="30" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="passwordBoxFocus" LostFocus="passwordBoxUnFocus" Foreground="White"/>
         <Button x:Name="prijaviSeButton" Style="{DynamicResource RoundedButtonStyle}" Content="Prijavi se" Foreground="White" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,169,0,0" VerticalAlignment="Top" Width="206" Background="{Binding ButtonColor}" FontWeight="Bold" MouseEnter="prijavaMouseEnter" MouseLeave="prijavaMouseLeave" Click="prijaviSe"/>
         <Rectangle x:Name="kvadrat1" Grid.Column="1" Fill="LightGray" HorizontalAlignment="Center" Height="2" Margin="54,88,0,0" VerticalAlignment="Top" Width="206"/>
         <Rectangle x:Name="kvadrat2" Grid.Column="1" Fill="LightGray" HorizontalAlignment="Center" Height="2" Margin="54,140,0,0" VerticalAlignment="Top" Width="206"/>
