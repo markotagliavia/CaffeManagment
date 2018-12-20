@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CaffeManagment.Common;
+using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.Model
 {
@@ -17,13 +19,22 @@ namespace CaffeManagment.Model
         private bool storniran;
         private float ukupnoPara;
         private string nazivStola;
+        private float uplaceno;
+        private float kusur;
+        private NacinPlacanja nacinPlacanja;
 
         public Check()
         {
+            NacinPlacanja = NacinPlacanja.KES;
+            Uplaceno = 0;
+            Kusur = 0;
         }
 
         public Check(Table table)
         {
+            NacinPlacanja = NacinPlacanja.KES;
+            Uplaceno = 0;
+            Kusur = 0;
         }
 
         public DateTime DateTime
@@ -54,5 +65,8 @@ namespace CaffeManagment.Model
 
         public float UkupnoPara { get => ukupnoPara; set => ukupnoPara = value; }
         public string NazivStola { get => nazivStola; set => nazivStola = value; }
+        public NacinPlacanja NacinPlacanja { get => nacinPlacanja; set => nacinPlacanja = value; }
+        public float Kusur { get => kusur; set => kusur = value; }
+        public float Uplaceno { get => uplaceno; set => uplaceno = value; }
     }
 }

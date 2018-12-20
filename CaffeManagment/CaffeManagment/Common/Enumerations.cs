@@ -43,5 +43,28 @@ namespace CaffeManagment.Common
             EDITPRICELISTITEM,
             CHECKS
         }
+
+        [Serializable]
+        public enum NacinPlacanja : int
+        {
+            KES = 0,
+            KARTICA = 1,
+            CEK = 2,
+            VIRMAN = 4
+        }
+
+        [Serializable]
+        public enum PoreskaGrupa : int
+        {
+            A = 0,
+            G = 1,
+            D = 2,
+            DJ = 4,
+            E = 5,
+            ZH = 6,
+            I = 7,
+            J = 8,
+            K = 9
+        }
     }
 }

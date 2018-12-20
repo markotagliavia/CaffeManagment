@@ -17,10 +17,18 @@ namespace CaffeManagment.Model
         private string sifraPica;
         private string nazivPica;
         private float acutelPrice;
+        private float popust;
+        private int stand;
+        private int grupaArtikla;
+        private PoreskaGrupa poreskaGrupa;
 
         public Drink()
         {
             id = Guid.NewGuid();
+            Stand = 1;
+            GrupaArtikla = 1;
+            Popust = 0;
+            PoreskaGrupa = Enumerations.PoreskaGrupa.DJ;
         }
 
         public Guid Id
@@ -49,7 +57,12 @@ namespace CaffeManagment.Model
             set { nazivPica = value; }
         }
 
+
         public float AcutelPrice { get => acutelPrice; set => acutelPrice = value; }
+        public float Popust { get => popust; set => popust = value; }
+        public int Stand { get => stand; set => stand = value; }
+        public int GrupaArtikla { get => grupaArtikla; set => grupaArtikla = value; }
+        public PoreskaGrupa PoreskaGrupa { get => poreskaGrupa; set => poreskaGrupa = value; }
 
         protected override void ValidateSelf()
         {
@@ -68,7 +81,18 @@ namespace CaffeManagment.Model
                 this.ValidationErrors[nameof(SifraPica)] = "Šifra pića je jedinstveno polje.";
             }
 
-            
+            try
+            {
+                int p = Int32.Parse(this.sifraPica);
+                if (p < 1 || p > 11956)
+                {
+                    this.ValidationErrors[nameof(SifraPica)] = "Šifra pića mora biti broj 1-11956.";
+                }
+            }
+            catch (Exception exe)
+            {
+                this.ValidationErrors[nameof(SifraPica)] = "Šifra pića mora biti broj 1-11956.";
+            }
         }
     }
 

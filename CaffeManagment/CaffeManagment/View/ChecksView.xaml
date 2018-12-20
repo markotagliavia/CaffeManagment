@@ -52,7 +52,7 @@
         <StackPanel Orientation="Horizontal" Margin="0,0,0,40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Button x:Name="stampajSelektovanButton" Content="Štampaj označen" FontSize="17" IsEnabled="{Binding SelektovanRacun}" Command="{Binding StampajCommand}"/>
             <Button x:Name="stornirajButton" Content="Storniraj" Margin="20,0,0,0" FontSize="17" IsEnabled="{Binding SelektovanRacun}" Command="{Binding StornirajCommand}"/>
-            <Button x:Name="exportButton" Content="Izveštaj" Margin="20,0,0,0" FontSize="17" Command="{Binding ExportCommand}"/>
+            <Button x:Name="exportButton" Content="Izveštaj" Margin="20,0,0,0" FontSize="17" Command="{Binding ExportCommand}" Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
 </UserControl>

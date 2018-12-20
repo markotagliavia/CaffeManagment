@@ -63,7 +63,7 @@
                 <Label Content="{Binding UkupnoZaSve}" FontWeight="Bold" FontSize="17"/>
                 <Label Content=" RSD" FontWeight="Bold" FontSize="17" />
             </StackPanel>
-            <Button Content="Štampaj za sve" Margin="5,10,5,0" IsEnabled="{Binding StampajSve}" FontSize="17" Command="{Binding StampajSveCommand}"/>
+            <Button Content="Štampaj za sve" Margin="5,10,5,0" IsEnabled="{Binding StampajSve}" FontSize="17" Command="{Binding StampajSveCommand}" Visibility="Collapsed"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="1" Orientation="Horizontal" Background="CornflowerBlue">

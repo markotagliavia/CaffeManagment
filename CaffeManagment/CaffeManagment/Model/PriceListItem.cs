@@ -50,6 +50,7 @@ namespace CaffeManagment.Model
             set { price = value; }
         }
 
+
         public bool ActivePrice { get => activePrice; set => activePrice = value; }
         public Guid Id { get => id; set => id = value; }
     }
