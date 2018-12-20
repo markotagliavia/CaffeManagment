@@ -15,7 +15,7 @@ namespace CaffeManagment.Model
         private string waiter;
         private DateTime dateTime;
         private ObservableCollection<DrinkWithPriceAndQuantity> pica;
-        private int id;
+        private Guid id;
         private bool storniran;
         private float ukupnoPara;
         private string nazivStola;
@@ -25,13 +25,19 @@ namespace CaffeManagment.Model
 
         public Check()
         {
+            id = Guid.NewGuid();
+            DateTime = DateTime.Now;
             NacinPlacanja = NacinPlacanja.KES;
             Uplaceno = 0;
             Kusur = 0;
+            storniran = false;
         }
 
         public Check(Table table)
         {
+            id = Guid.NewGuid();
+            DateTime = DateTime.Now;
+            storniran = false;
             NacinPlacanja = NacinPlacanja.KES;
             Uplaceno = 0;
             Kusur = 0;
@@ -52,7 +58,7 @@ namespace CaffeManagment.Model
             get { return waiter; }
             set { waiter = value; }
         }
-        public int Id
+        public Guid Id
         {
             get { return id; }
             set { id = value; }

@@ -126,12 +126,13 @@ namespace CaffeManagment.ViewModel
         {
             if (SelektovaniIndeks > -1)
             {
-                if (!racuni.ElementAt(selektovaniIndeks).Storniran)
+                if (!Racuni.ElementAt(selektovaniIndeks).Storniran)
                 {
-                    racuni.ElementAt(selektovaniIndeks).Storniran = true;
-                    if (DataSourceUtil.Instance.WriteChecks(racuni, racuni.ElementAt(selektovaniIndeks).DateTime))
+                    Racuni.ElementAt(selektovaniIndeks).Storniran = true;
+                    if (DataSourceUtil.Instance.WriteChecks(Racuni, Racuni.ElementAt(selektovaniIndeks).DateTime))
                     {
                         Console.WriteLine("Uspesno serijalizovani racuni");
+                        MessageBox.Show("Racun je uspesno storniran!");
                     }
                     else
                     {
@@ -165,7 +166,6 @@ namespace CaffeManagment.ViewModel
             set
             {
                 racuni = value;
-                UkupnoSve = racuni.Where(x => x.Storniran == false).Sum(item => item.UkupnoPara);
                 OnPropertyChanged("Racuni");
             }
         }
@@ -179,13 +179,13 @@ namespace CaffeManagment.ViewModel
                 OnPropertyChanged("SelektovaniIndeks");
                 if (selektovaniIndeks > -1)
                 {
-                    selektovanRacun = true;
-                    pica = racuni.ElementAt(selektovaniIndeks).Pica;
+                    SelektovanRacun = true;
+                    Pica = Racuni.ElementAt(selektovaniIndeks).Pica;
                 }
                 else
                 {
-                    selektovanRacun = false;
-                    pica = new ObservableCollection<DrinkWithPriceAndQuantity>();
+                    SelektovanRacun = false;
+                    Pica = new ObservableCollection<DrinkWithPriceAndQuantity>();
                 }
             }
         }
@@ -227,7 +227,13 @@ namespace CaffeManagment.ViewModel
             ObservableCollection<Check> pom;
             if ((pom = DataSourceUtil.Instance.ReadChecks(DatumOd)) != null)
             {
-                racuni = pom;
+                Racuni = pom;
+                UkupnoSve = Racuni.Where(x => x.Storniran == false).Sum(item => item.UkupnoPara);
+            }
+            else
+            {
+                Racuni = new ObservableCollection<Check>();
+                UkupnoSve = 0;
             }
         }
     }

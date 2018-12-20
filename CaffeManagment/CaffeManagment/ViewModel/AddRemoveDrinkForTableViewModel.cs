@@ -139,7 +139,7 @@ namespace CaffeManagment.ViewModel
                 if (SelectedPiceLevo != -1)
                 {
                     Drink p = PiceLevo.ElementAt(SelectedPiceLevo);
-                    DrinkWithPriceAndQuantity pk = new DrinkWithPriceAndQuantity(p.NazivPica, p.SifraPica, kolicina, p.AcutelPrice);
+                    DrinkWithPriceAndQuantity pk = new DrinkWithPriceAndQuantity(p.NazivPica, p.SifraPica, kolicina, p.AcutelPrice, Enumerations.PoreskaGrupa.DJ);
                     PiceDesno.Add(pk);
                 }
                 else

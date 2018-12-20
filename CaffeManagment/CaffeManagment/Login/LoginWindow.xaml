@@ -7,7 +7,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CaffeManagment.Login"
         mc:Ignorable="d"
-        Title="Prijava" Height="300" Width="650" WindowStartupLocation="CenterScreen" Background="{Binding BackgroundColor}" KeyDown="MetroWindow_KeyDown" Focusable="True" Icon="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.png">
+        Title="Prijava" Height="300" Width="650" WindowStartupLocation="CenterScreen" Background="{Binding BackgroundColor}" KeyDown="MetroWindow_KeyDown" Focusable="True" Icon="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.jpg">
 
     <Window.Resources>
         <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
@@ -33,7 +33,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.png" Stretch="Fill"/>
+        <Image Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/CaffeManagment;component/Resources/Images/logo.jpg" Stretch="Fill"/>
 
         <TextBox x:Name="usernameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,63,0,0" MaxLength="30" Text="Korisničko ime" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="usernameTextBoxFocus" LostFocus="usernameTextBoxUnFocus" Foreground="White"/>
         <PasswordBox x:Name="passBox" Grid.Column="1" HorizontalAlignment="Center" Height="25" Margin="54,115,0,0" MaxLength="30" VerticalAlignment="Top" Width="206" BorderBrush="White" GotFocus="passwordBoxFocus" LostFocus="passwordBoxUnFocus" Foreground="White"/>

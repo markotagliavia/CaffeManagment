@@ -103,18 +103,21 @@ namespace CaffeManagment.Model
         private string sifra;
         private int kolicina;
         private float cena;
+        private PoreskaGrupa poreskaGrupa;
 
-        public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena)
+        public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena, PoreskaGrupa pg)
         {
             this.naziv = naziv;
             this.kolicina = kolicina;
             this.cena = cena;
             this.sifra = sifra;
+            this.poreskaGrupa = pg;
         }
 
         public int Kolicina { get => kolicina; set => kolicina = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public float Cena { get => cena; set => cena = value; }
         public string Sifra { get => sifra; set => sifra = value; }
+        public PoreskaGrupa PoreskaGrupa { get => poreskaGrupa; set => poreskaGrupa = value; }
     }
 }
