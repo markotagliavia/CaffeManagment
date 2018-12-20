@@ -76,6 +76,11 @@ namespace CaffeManagment.Model
             }
             
             var priceList = DataSourceUtil.Instance.ReadPriceList();
+            if (priceList == null)
+            {
+                priceList = new PriceList();
+            }
+
             if (priceList.Items.Values.Any(x => x.SifraPica.Equals(this.SifraPica) && x.Id != this.Id))
             {
                 this.ValidationErrors[nameof(SifraPica)] = "Šifra pića je jedinstveno polje.";
@@ -103,18 +108,21 @@ namespace CaffeManagment.Model
         private string sifra;
         private int kolicina;
         private float cena;
+        private PoreskaGrupa poreskaGrupa;
 
-        public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena)
+        public DrinkWithPriceAndQuantity(string naziv, string sifra, int kolicina, float cena, PoreskaGrupa pg)
         {
             this.naziv = naziv;
             this.kolicina = kolicina;
             this.cena = cena;
             this.sifra = sifra;
+            this.poreskaGrupa = pg;
         }
 
         public int Kolicina { get => kolicina; set => kolicina = value; }
         public string Naziv { get => naziv; set => naziv = value; }
         public float Cena { get => cena; set => cena = value; }
         public string Sifra { get => sifra; set => sifra = value; }
+        public PoreskaGrupa PoreskaGrupa { get => poreskaGrupa; set => poreskaGrupa = value; }
     }
 }

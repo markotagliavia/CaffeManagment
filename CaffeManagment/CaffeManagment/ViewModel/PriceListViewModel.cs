@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -150,7 +151,18 @@ namespace CaffeManagment.ViewModel
                 }
             }
             DataSourceUtil.Instance.WritePriceList(list);
+            DeletePrice();
             Load();
+        }
+
+        private void DeletePrice()
+        {
+            var csv = new StringBuilder();
+            csv.AppendLine($"107,1,______,_,__;3;{SelectedPriceListItem.SifraPica};");
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Obrisana.inv");
+
+            File.WriteAllText(filePath, csv.ToString());
+            System.Windows.MessageBox.Show("Cena je uspešno obrisana.");
         }
 
         private void OnEdit()

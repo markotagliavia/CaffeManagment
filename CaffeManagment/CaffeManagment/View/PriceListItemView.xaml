@@ -29,31 +29,31 @@
                 <StackPanel Orientation="Vertical" Grid.Row="0">
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Šifra pića:" FontWeight="Bold" Width="100"></Label>
-                        <TextBox Width="200" Text="{Binding PriceListItem.SifraPica}"/>
+                        <TextBox Width="200" Text="{Binding PriceListItem.SifraPica}" IsEnabled="{Binding Editable}"/>
                         <TextBlock Text="{Binding PriceListItem.ValidationErrors[SifraPica]}"
                                Foreground="Red"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Naziv pića:" FontWeight="Bold" Width="100"></Label>
-                        <TextBox Width="200" Text="{Binding PriceListItem.NazivPica}"/>
+                        <TextBox Width="200" Text="{Binding PriceListItem.NazivPica}" IsEnabled="{Binding Editable}"/>
                         <TextBlock Text="{Binding PriceListItem.ValidationErrors[NazivPica]}"
                                Foreground="Red"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Tip pića:" FontWeight="Bold" Width="100"></Label>
-                        <ComboBox Name="tippica" Width="200" SelectedItem="{Binding PriceListItem.TipPica}"/>
+                        <ComboBox Name="tippica" Width="200" SelectedItem="{Binding PriceListItem.TipPica}" IsEnabled="{Binding Editable}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Poreklo pića:" FontWeight="Bold" Width="100"></Label>
-                        <ComboBox Name="poreklo" Width="200" SelectedItem="{Binding PriceListItem.Poreklo}"/>
+                        <ComboBox Name="poreklo" Width="200" SelectedItem="{Binding PriceListItem.Poreklo}" IsEnabled="{Binding Editable}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Cena:" FontWeight="Bold" Width="100"></Label>
                         <local:DigetTextBox Width="80" Text="{Binding PriceListItem.AcutelPrice}"></local:DigetTextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
-                        <Label Content="Popust:" FontWeight="Bold" Width="100"></Label>
-                        <local:DigetTextBox Width="80" Text="{Binding PriceListItem.Popust}"></local:DigetTextBox>
+                        <Label Content="Poreska grupa:" FontWeight="Bold" Width="100"></Label>
+                        <ComboBox Height="25" Width="130" ItemsSource="{Binding Enums}" SelectedItem="{Binding PriceListItem.PoreskaGrupa}" IsEnabled="{Binding Editable}"></ComboBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
