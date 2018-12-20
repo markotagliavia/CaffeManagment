@@ -5,10 +5,12 @@ using CaffeManagment.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static CaffeManagment.Common.Enumerations;
 
 namespace CaffeManagment.ViewModel
 {
@@ -65,7 +67,58 @@ namespace CaffeManagment.ViewModel
 
         private void StampajStoExecute()
         {
-           //TO DO
+            //int uplata = 0; to do: uzeti vrednost uplate
+            try
+            {
+                string ticks = DateTime.Now.Ticks.ToString();
+                string sub = ticks.Substring(3, 15);
+                var csv = new StringBuilder();
+                csv.AppendLine($"48,1,___,_,__;{sub};1;1234;1;;");
+                DateTime d = DateTime.Now;
+                string nazivFajla = $"{NazivStola}_{d.Year}_{d.Month}_{d.Day}_{d.Hour}_{d.Minute}_{d.Second}.inv";
+                string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "KomandeUlaz", nazivFajla);
+
+                foreach (DrinkWithPriceAndQuantity item in PicaDataSource)
+                {
+                    csv.AppendLine($"S,1,___,_,__;{item.Naziv};{item.Cena};{item.Kolicina};1;1;{(int)item.PoreskaGrupa};0;{item.Sifra};");
+                }
+
+                csv.AppendLine($"T,1,___,_,__;{(int)NacinPlacanja.KES};{UkupnoZaSto};;;;");
+                File.WriteAllText(filePath, csv.ToString());
+                NapraviRacun();
+                SelectedTable.Poruceno.Clear();
+                SelectedTable.StanjeStola = State.EMPTY;
+                PicaDataSource = new ObservableCollection<DrinkWithPriceAndQuantity>();
+                Tables.FirstOrDefault(x => x.Id == SelectedTable.Id).Poruceno.Clear();
+                Tables.FirstOrDefault(x => x.Id == SelectedTable.Id).StanjeStola = State.EMPTY;
+                DataSourceUtil.Instance.WriteTables(Tables);
+                HandleTableChanged(SelectedTable);
+
+                MessageBox.Show($"Racun istampan! Kusur je 0 RSD.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Neuspešno upisivanje fajlova. Originalna greška: " + ex.Message);
+            }
+        }
+
+        private void NapraviRacun()
+        {
+            DateTime d = DateTime.Now;
+            ObservableCollection<Check> racuni = DataSourceUtil.Instance.ReadChecks(d);
+            if (racuni == null)
+            {
+                racuni = new ObservableCollection<Check>();
+            }
+            Check c = new Check();
+            c.Kusur = 0;
+            c.Uplaceno = UkupnoZaSto;
+            c.Pica = PicaDataSource;
+            c.Waiter = UserOnSession.Username;
+            c.UkupnoPara = UkupnoZaSto;
+            c.NazivStola = NazivStola;
+            racuni.Add(c);
+            DataSourceUtil.Instance.WriteChecks(racuni, d);
         }
 
         private void SviNaloziExecute()
@@ -286,6 +339,14 @@ namespace CaffeManagment.ViewModel
                     SelektovanSto = true;
                 }
                 PicaDataSource = SelectedTable.Poruceno;
+                if (PicaDataSource.Count > 0)
+                {
+                    StampajSto = true;
+                }
+                else
+                {
+                    StampajSto = false;
+                }
             }
         }
 
