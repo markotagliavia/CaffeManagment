@@ -30,6 +30,7 @@ namespace CaffeManagment.ViewModel
                 priceListItem = new Drink();
                 priceListItem.AcutelPrice = 0;
                 PriceListItem.PoreskaGrupa = PoreskaGrupa.DJ;
+                priceListItem.Stanje = 0;
                 Editable = true;
                 
             }

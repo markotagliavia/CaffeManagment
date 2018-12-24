@@ -45,6 +45,7 @@
                     <DataGridTextColumn Header="Cena" Binding="{Binding AcutelPrice}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tip pića" Binding="{Binding TipPica}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Poreklo pića" Binding="{Binding Poreklo}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Stanje" Binding="{Binding Stanje}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

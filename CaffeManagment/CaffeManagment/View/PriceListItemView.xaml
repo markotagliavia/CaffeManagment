@@ -52,6 +52,10 @@
                         <local:DigetTextBox Width="80" Text="{Binding PriceListItem.AcutelPrice}"></local:DigetTextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
+                        <Label Content="Stanje:" FontWeight="Bold" Width="100"></Label>
+                        <local:DigetTextBox Width="80" Text="{Binding PriceListItem.Stanje}"></local:DigetTextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" >
                         <Label Content="Poreska grupa:" FontWeight="Bold" Width="100"></Label>
                         <ComboBox Height="25" Width="130" ItemsSource="{Binding Enums}" SelectedItem="{Binding PriceListItem.PoreskaGrupa}" IsEnabled="{Binding Editable}"></ComboBox>
                     </StackPanel>

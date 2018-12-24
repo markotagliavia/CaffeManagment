@@ -157,23 +157,31 @@ namespace CaffeManagment.ViewModel
 
         private void DeletePrice()
         {
-            var csv = new StringBuilder();
-            csv.AppendLine($"107,1,______,_,__;3;{SelectedPriceListItem.SifraPica};");
-            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Obrisana.inv");
+            string pass = Microsoft.VisualBasic.Interaction.InputBox("Password?", "", "");
+            if (pass == "cenovniksrki")
+            {
+                var csv = new StringBuilder();
+                csv.AppendLine($"107,1,______,_,__;3;{SelectedPriceListItem.SifraPica};");
+                string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Obrisana.inv");
 
-            File.WriteAllText(filePath, csv.ToString());
-            System.Windows.MessageBox.Show("Cena je uspešno obrisana.");
+                File.WriteAllText(filePath, csv.ToString());
+                System.Windows.MessageBox.Show("Cena je uspešno obrisana.");
+            }
         }
 
         private void OnEdit()
         {
-            if (SelectedPriceListItem == null)
+            string pass = Microsoft.VisualBasic.Interaction.InputBox("Password?", "", "");
+            if (pass == "cenovniksrki")
             {
-                System.Windows.MessageBox.Show("Morate selektovati cenu koju želite da izmenite.");
-                return;
+                if (SelectedPriceListItem == null)
+                {
+                    System.Windows.MessageBox.Show("Morate selektovati cenu koju želite da izmenite.");
+                    return;
+                }
+                PriceListItemView priceList = new PriceListItemView(Enumerations.Operation.EDIT, SelectedPriceListItem);
+                priceList.ShowDialog();
             }
-            PriceListItemView priceList = new PriceListItemView(Enumerations.Operation.EDIT,SelectedPriceListItem);
-            priceList.ShowDialog();
         }
 
         private bool CanEdit()
@@ -284,9 +292,12 @@ namespace CaffeManagment.ViewModel
 
         public void OnAdd()
         {
-            PriceListItemView priceList = new PriceListItemView(Enumerations.Operation.ADD);
-            priceList.ShowDialog();
-
+            string pass = Microsoft.VisualBasic.Interaction.InputBox("Password?", "", "");
+            if(pass == "cenovniksrki")
+            {
+                PriceListItemView priceList = new PriceListItemView(Enumerations.Operation.ADD);
+                priceList.ShowDialog();
+            }
         }
 
 

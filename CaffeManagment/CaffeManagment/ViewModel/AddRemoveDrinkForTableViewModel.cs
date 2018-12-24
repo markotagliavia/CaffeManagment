@@ -89,8 +89,21 @@ namespace CaffeManagment.ViewModel
                 {
                     ((TablesViewModel)MainWindowViewModel.Instance.CurrentViewModel).Tables = DataSourceUtil.Instance.ReadTables();
                     MainWindowViewModel.Instance.NotifySelectionChanged(pom.FirstOrDefault(x => x.Id == tableForEdit.Id));
-                    System.Media.SystemSounds.Asterisk.Play();
-                    OtkaziExecute(null);
+                    var pom2 = DataSourceUtil.Instance.ReadPriceList();
+                    foreach (var piceItem in PiceDesno)
+                    {
+                        pom2.Items.FirstOrDefault(x => x.Value.SifraPica == piceItem.Sifra).Value.Stanje -= piceItem.Kolicina;
+                    }
+                    if (DataSourceUtil.Instance.WritePriceList(pom2))
+                    {
+                        System.Media.SystemSounds.Asterisk.Play();
+                        MessageBox.Show("Uspesna porudzbina!");
+                        OtkaziExecute(null);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Greska!");
+                    }
                 }
                 else
                 {

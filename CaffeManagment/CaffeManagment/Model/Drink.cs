@@ -21,6 +21,7 @@ namespace CaffeManagment.Model
         private int stand;
         private int grupaArtikla;
         private PoreskaGrupa poreskaGrupa;
+        private float stanje;
 
         public Drink()
         {
@@ -63,6 +64,7 @@ namespace CaffeManagment.Model
         public int Stand { get => stand; set => stand = value; }
         public int GrupaArtikla { get => grupaArtikla; set => grupaArtikla = value; }
         public PoreskaGrupa PoreskaGrupa { get => poreskaGrupa; set => poreskaGrupa = value; }
+        public float Stanje { get => stanje; set => stanje = value; }
 
         protected override void ValidateSelf()
         {
